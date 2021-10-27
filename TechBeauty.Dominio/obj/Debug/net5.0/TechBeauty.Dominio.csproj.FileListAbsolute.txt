@@ -1,0 +1,12 @@
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.csproj.AssemblyReference.cache
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.AssemblyInfoInputs.cache
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.AssemblyInfo.cs
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\bin\Debug\net5.0\TechBeauty.Dominio.deps.json
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\bin\Debug\net5.0\TechBeauty.Dominio.dll
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\bin\Debug\net5.0\ref\TechBeauty.Dominio.dll
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\bin\Debug\net5.0\TechBeauty.Dominio.pdb
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.dll
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\obj\Debug\net5.0\ref\TechBeauty.Dominio.dll
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.pdb
