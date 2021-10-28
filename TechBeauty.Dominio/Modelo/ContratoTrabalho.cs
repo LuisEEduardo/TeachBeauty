@@ -12,6 +12,10 @@ namespace TechBeauty.Dominio.Modelo
         public List<Cargo> Cargos { get; private set; }
         public string CnpjCTPS { get; private set; }
 
+        // Propriedades dos Sistema Financeiro ---------------
+        public int Bonificacao { get; private set; }
+        public decimal Salario { get; private set; }
+        // ---------------------------------------------------
 
         public static ContratoTrabalho Criar(int Id,
             RegimeContratual regimeContratual,
