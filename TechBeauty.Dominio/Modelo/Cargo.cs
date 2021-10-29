@@ -32,12 +32,5 @@
             Descricao = descricao;
         }
 
-        public override string ToString()
-        {
-            return $"Id: {Id}, " +
-                $"Nome: {Nome}, " +
-                $"Descrição: {Descricao}";
-        }
-
     }
 }

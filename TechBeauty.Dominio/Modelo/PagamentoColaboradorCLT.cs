@@ -2,10 +2,9 @@
 {
     public class PagamentoColaboradorCLT : PagamentoColaborador
     {
-
-        protected override void PagarSalario()
+        protected override void CalcPagamento()
         {
-            throw new System.NotImplementedException();
+            // Colaborador.Contrato.Salario + ValorComissao; 
         }
     }
 }

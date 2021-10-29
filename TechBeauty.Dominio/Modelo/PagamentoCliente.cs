@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using TechBeauty.Dominio.Modelo.Enumeradores;
 
 namespace TechBeauty.Dominio.Modelo
 {
@@ -6,32 +8,54 @@ namespace TechBeauty.Dominio.Modelo
     {
 
         public int Id { get; private set; }
-        public Agendamento Agendamento { get; private set; }
+        public List<Agendamento> Agendamentos { get; private set; }
         public DateTime DiaPagamento { get; private set; }
-        public FormasPagamentoCliente FormasPagamentoCliente { get; private set;}
+        public FormasPagamento FormasPagamento { get; private set;}
         public StatusPagamento StatusPagamento { get; private set; }
+        public decimal Pagamento { get; private set; }
+        
 
-
-        public static PagamentoCliente Criar(int id, Agendamento agendamento, DateTime diaPagamento, 
-            FormasPagamentoCliente formasPagamentoCliente, StatusPagamento statusPagamento)
+        public static PagamentoCliente Criar(int id, List<Agendamento> agendamentos, DateTime diaPagamento, 
+            FormasPagamento formasPagamento, StatusPagamento statusAgendamento, decimal pagamento)
         {
             PagamentoCliente pagamentoCliente = new PagamentoCliente();
             pagamentoCliente.Id = id;
-            pagamentoCliente.Agendamento = agendamento;
+            pagamentoCliente.Agendamentos = agendamentos;
             pagamentoCliente.DiaPagamento = diaPagamento;
-            pagamentoCliente.FormasPagamentoCliente = formasPagamentoCliente;
-            pagamentoCliente.StatusPagamento = statusPagamento;
+            pagamentoCliente.FormasPagamento = formasPagamento;
+            pagamentoCliente.StatusPagamento = statusAgendamento;
+            pagamentoCliente.Pagamento = pagamento;
 
-            return pagamentoCliente;
+            return pagamentoCliente; 
         }
 
-        public void Alterar(Agendamento agendamento, DateTime diaPagamento,
-            FormasPagamentoCliente formasPagamentoCliente, StatusPagamento statusPagamento)
+
+        public void CalcValorPagamento()
         {
-            Agendamento = agendamento;
-            DiaPagamento = diaPagamento;
-            FormasPagamentoCliente = formasPagamentoCliente;
-            StatusPagamento = statusPagamento; 
+            foreach (Agendamento agendamento in Agendamentos)
+            {
+                Pagamento += agendamento.OS.PrecoTotal;
+            }
+        }
+
+        public void AlterarStatusPagamento(StatusPagamento statusPagamento)
+        {
+            StatusPagamento = statusPagamento;
+        }
+
+        public void AddAgendamento(Agendamento agendamento)
+        {
+            Agendamentos.Add(agendamento);
+        }
+
+        public void RemoveAgendamento(Agendamento agendamento)
+        {
+            Agendamentos.Remove(agendamento);
+        }
+
+        public void AlterarFormaPagamento(FormasPagamento formasPagamento)
+        {
+            FormasPagamento = formasPagamento;
         }
 
     }

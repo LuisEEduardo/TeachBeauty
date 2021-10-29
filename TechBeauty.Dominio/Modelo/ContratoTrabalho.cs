@@ -13,7 +13,6 @@ namespace TechBeauty.Dominio.Modelo
         public string CnpjCTPS { get; private set; }
 
         // Propriedades dos Sistema Financeiro ---------------
-        public int Bonificacao { get; private set; }
         public decimal Salario { get; private set; }
         // ---------------------------------------------------
 
