@@ -8,7 +8,7 @@ namespace TechBeauty.Dominio.Modelo
         public int Id { get; private set; }
         public Servico Servico { get; private set; }
         public Colaborador Colaborador { get; private set; }
-        public string PessoaAtendia  { get; private set; }   
+        public string PessoaAtendia { get; private set; }
         public DateTime DataHora { get; private set; }
         public OrdemServico OS { get; private set; }
         public DateTime DataHoraCriacao { get; private set; }
@@ -27,22 +27,34 @@ namespace TechBeauty.Dominio.Modelo
             agendamento.OS = os;
             agendamento.DataHoraCriacao = dataHoraCriacao;
             agendamento.DataHoraExecucao = dataHoraExecucao;
-            return agendamento; 
+            return agendamento;
         }
 
-        public void Alterar(Servico servico, Colaborador colaborador,
-            string pessoaAtendia, DateTime dataHora, OrdemServico os, DateTime dataHoraCriacao,
-            DateTime dataHoraExecucao)
+
+        public void CancelarAgendamento()
+        {
+            OS.AlterarStatus(Enumeradores.StatusOS.Cancelado);
+        }
+
+        public void AlterarServico(Servico servico)
         {
             Servico = servico;
-            Colaborador = colaborador;
-            PessoaAtendia = pessoaAtendia;
-            DataHora = dataHora;
-            OS = os;
-            DataHoraCriacao = dataHoraCriacao;
-            DataHoraExecucao = dataHoraExecucao;
         }
 
+        public void AlterarColaborador(Colaborador colaborador)
+        {
+            Colaborador = colaborador;
+        }
+
+        public void AlterarPessoaAtendida(string pessoaAtendida)
+        {
+            PessoaAtendia = pessoaAtendida;
+        }
+
+        public void Remarcar(DateTime dataHoraExecucao)
+        {
+            DataHoraExecucao = dataHoraExecucao;
+        }
 
     }
 }

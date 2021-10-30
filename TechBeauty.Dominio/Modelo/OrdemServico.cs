@@ -22,15 +22,36 @@ namespace TechBeauty.Dominio.Modelo
             return ordemServico;
         }
 
-        public void Alterar(decimal precoTotal, int duracaoTotal, Cliente cliente, StatusOS status)
+        public void AddValorPrecoTotal(decimal preco)
         {
-            PrecoTotal = precoTotal;
-            DuracaoTotal = duracaoTotal;
+            PrecoTotal += preco; 
+        }
+
+        public void RemoveDeValorPrecoTotal(decimal preco)
+        {
+            PrecoTotal -= preco;
+        }
+
+        public void AddDuracaoTotal(int tempoEmMin)
+        {
+            DuracaoTotal += tempoEmMin;
+        }
+
+        public void RemoverDeDuracaoTotal(int tempoEmMin)
+        {
+            DuracaoTotal += tempoEmMin;
+        }
+
+        public void AlterarCliente(Cliente cliente)
+        {
             Cliente = cliente;
+        }
+
+        public void AlterarStatus(StatusOS status)
+        {
             Status = status; 
         }
 
-
-
     }
+
 }

@@ -9,40 +9,50 @@ namespace TechBeauty.Dominio.Modelo
         public Endereco Endereco { get; private set; }
         public Genero Genero { get; private set; }
         public string NomeSocial { get; private set; }
-        public ContratoTrabalho Contrato { get; private set; }
+        public ContratoTrabalho ContratoTrabalho { get; private set; }
 
         public static Colaborador Criar(
             List<Servico> servicos, 
             Endereco endereco, 
             Genero genero, 
             string nomeSocial, 
-            ContratoTrabalho contrato,
+            ContratoTrabalho contratoTrabalho,
+            int id, 
             string nome, 
             string cpf,
             DateTime dataNascimento,
             List<Contato> contatos)
         {
             Colaborador colaborador = new Colaborador();
+            colaborador.Id = id;
             colaborador.Servicos = servicos;
             colaborador.Endereco = endereco;
             colaborador.Genero = genero;
             colaborador.NomeSocial = nomeSocial;
-            colaborador.Contrato = contrato;
+            colaborador.ContratoTrabalho = contratoTrabalho;
             colaborador.Nome = nome;
             colaborador.CPF = cpf;
             colaborador.DataNascimento = dataNascimento;
             colaborador.Contatos = contatos; 
+
             return colaborador; 
         }
 
-        public void Alterar(List<Servico> servicos, Endereco endereco, Genero genero, string nomeSocial, ContratoTrabalho contrato)
+        public void AddServico(Servico servico)
         {
-            Servicos = servicos;
-            Endereco = endereco;
-            Genero = genero;
-            NomeSocial = nomeSocial;
-            Contrato = contrato;
+            Servicos.Add(servico);
         }
+
+        public void RemoveServico(Servico servico)
+        {
+            Servicos.Remove(servico);
+        }
+
+        public void AlterarNomeSocial(string nomeSocial)
+        {
+            NomeSocial = nomeSocial; 
+        }
+
 
     }
 }

@@ -20,10 +20,14 @@ namespace TechBeauty.Dominio.Modelo
             return escala; 
         }
 
-        public void Alterar(DateTime dataHoraEntrada, DateTime dataHoraSaida)
+        public void AlterarDataHoraEntrada(DateTime dataHoraEntrada)
         {
             DataHoraEntrada = dataHoraEntrada;
-            DataHoraSaida = dataHoraSaida;            
+        }
+
+        public void AlterarDataHoraSaida(DateTime dataHoraSaida)
+        {
+            DataHoraSaida = dataHoraSaida;
         }
 
 

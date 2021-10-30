@@ -5,9 +5,11 @@ namespace TechBeauty.Dominio.Modelo
 {
     public class LogAgendamento
     {
-        public DateTime DataCriacao { get; private set; }
+        public int Id { get; private set; }
+        public int IdAgendamento { get; private set; }        
         public StatusAgendamento Status { get; private set; }
-        public int IdAgendamento { get; private set; }
+        public DateTime DataCriacao { get; private set; }
+
 
         public static LogAgendamento Criar(DateTime dataCriacao, StatusAgendamento status, int idAgendamento)
         {
@@ -22,7 +24,7 @@ namespace TechBeauty.Dominio.Modelo
 
         public void AlterarStatus(StatusAgendamento status)
         {
-            Status = status; 
+            Status = status;
         }
 
 
