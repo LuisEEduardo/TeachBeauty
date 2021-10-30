@@ -19,7 +19,6 @@ namespace TechBeauty.Dominio.Modelo
         public static ContratoTrabalho Criar(int Id,
             RegimeContratual regimeContratual,
             DateTime dataEntrada,
-            DateTime? dataDesligamento,
             List<Cargo> cargos,
             string cnpjCTPS)
         {
@@ -27,52 +26,36 @@ namespace TechBeauty.Dominio.Modelo
             contratoTrabalho.Id = Id;
             contratoTrabalho.RegimeContratual = regimeContratual;
             contratoTrabalho.DataEntrada = dataEntrada;
-            contratoTrabalho.DataDesligamento = dataDesligamento;
             contratoTrabalho.Cargos = cargos;
             contratoTrabalho.CnpjCTPS = cnpjCTPS;
             return contratoTrabalho;
         }
 
-        public void Alterar(RegimeContratual regimeContratual,
-            DateTime dataEntrada,
-            DateTime? dataDesligamento,
-            List<Cargo> cargos,
-            string cnpjCTPS)
+        public void RenovarContrato(DateTime dataEntrada, DateTime? dataDesligamento = null)
         {
-            RegimeContratual = regimeContratual;
             DataEntrada = dataEntrada;
             DataDesligamento = dataDesligamento;
-            Cargos = cargos;
-            CnpjCTPS = cnpjCTPS;
         }
 
-        public void ListarAtividades()
+        public void AlterarCnpjCTPS(string cnpjCTPS)
         {
-            Console.WriteLine("Atividades:");
-            foreach (Cargo cargo in Cargos)
-            {
-                Console.WriteLine($"{cargo.Id}, {cargo.Nome}, {cargo.Descricao}");
-            }
+            CnpjCTPS = cnpjCTPS; 
         }
 
-        public String CalcTempoNaEmpresa()
-        {         
-            DateTime dtAtual = DateTime.Now;
-            String tempoDeEmpresa = $"Você tem {Math.Abs(dtAtual.Year - DataEntrada.Year)} anos, " +
-                $"{Math.Abs(dtAtual.Month - DataEntrada.Month)} meses, {Math.Abs(dtAtual.Day - DataEntrada.Day)} dias";
-            return tempoDeEmpresa;
-        }
-
-        public void TrocarRegimeContratual(RegimeContratual novoRegimeContratual)
+        public void AlterarSalario(decimal salario)
         {
-            RegimeContratual = novoRegimeContratual;
+            Salario = salario;
+        }
+
+        public void AlterarRegimeContratual(RegimeContratual regimeContratual)
+        {
+            RegimeContratual = regimeContratual;
         }
 
         public void AddCargo(Cargo cargo)
         {
             Cargos.Add(cargo);
         }
-
 
         public void RemoverCargo(Cargo cargo)
         {

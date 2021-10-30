@@ -16,12 +16,6 @@
             return cargo;
         }
 
-        public void Alterar(string nome, string descricao)
-        {
-            Nome = nome;
-            Descricao = descricao;
-        }
-
         public void MudarNome(string nome)
         {
             Nome = nome; 

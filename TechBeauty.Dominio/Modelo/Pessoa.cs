@@ -11,10 +11,6 @@ namespace TechBeauty.Dominio.Modelo
         public DateTime DataNascimento { get; protected set; }
         public List<Contato> Contatos { get; protected set; }
 
-        public void AlteraId(int id)
-        {
-            Id = id;
-        }
         
         public bool ValidaCPF()
         {
@@ -25,17 +21,22 @@ namespace TechBeauty.Dominio.Modelo
         {
             return DateTime.Now.Year - DataNascimento.Year;
         }
-        
-        public String ListarContatos()
+
+        public void AlterarNome(string nome)
         {
-            string lstContatos = "";
-            foreach (var contato in Contatos)
-            {
-                lstContatos = $"Tipo: {contato.Tipo.Valor}, Valor: {contato.Valor}";
-            }
-            return lstContatos; 
+            Nome = nome; 
         }
 
+
+        public void AddContato(Contato contato)
+        {
+            Contatos.Add(contato);
+        }
+
+        public void RemoverContato(Contato contato)
+        {
+            Contatos.Remove(contato);
+        }
 
     }
 }

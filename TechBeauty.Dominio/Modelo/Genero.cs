@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TechBeauty.Dominio.Modelo
+﻿namespace TechBeauty.Dominio.Modelo
 {
     public class Genero
     {
@@ -19,7 +13,7 @@ namespace TechBeauty.Dominio.Modelo
             return genero;
         }
 
-        public void Alterar(string valor)
+        public void AlterarValor(string valor)
         {
             Valor = valor;
         }

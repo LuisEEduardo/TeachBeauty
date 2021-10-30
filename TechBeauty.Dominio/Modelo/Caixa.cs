@@ -31,10 +31,19 @@ namespace TechBeauty.Dominio.Modelo
             DescricaoAddValor.Add($"Motivo: {motivo} | Valor: {valor}"); 
         }
 
-        public void buscaFechamento(FechamentoDiario fechamentoDiario)
+        public FechamentoDiario buscaFechamento(FechamentoDiario fechamentoDiario)
         {
-            // Fechamentos.Find(fechamentoDiario); 
+            foreach (FechamentoDiario fechamento in Fechamentos)
+            {
+                if (fechamento == fechamentoDiario)
+                {
+                    return fechamento; 
+                }
+            }
+            return null; 
         }
+
+
 
     }
 }

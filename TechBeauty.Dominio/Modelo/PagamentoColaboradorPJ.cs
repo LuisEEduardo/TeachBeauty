@@ -27,7 +27,12 @@ namespace TechBeauty.Dominio.Modelo
 
         protected override void CalcPagamento()
         {
-            throw new NotImplementedException();
+            decimal salarioDia = 0;
+            foreach (Agendamento agendamento in AgendamentosDia)
+            {
+                salarioDia += agendamento.Servico.Preco; 
+            }
+            Colaborador.Contrato.AlterarSalario(salarioDia);
         }
     }
 }
