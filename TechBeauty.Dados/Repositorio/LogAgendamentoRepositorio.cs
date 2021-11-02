@@ -4,7 +4,7 @@ using TechBeauty.Dominio.Modelo;
 using TechBeauty.Dominio.Modelo.Enumeradores;
 using System.Linq;
 
-namespace TechBeauty.Dominio.Repositorio
+namespace TechBeauty.Dados.Repositorio
 {
     public class LogAgendamentoRepositorio
     {

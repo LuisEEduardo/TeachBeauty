@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TechBeauty.Dominio.Modelo;
 
-namespace TechBeauty.Dominio.Repositorio
+namespace TechBeauty.Dados.Repositorio
 {
     class ColaboradorRepositorio
     {

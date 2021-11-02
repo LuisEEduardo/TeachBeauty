@@ -6,10 +6,13 @@ namespace TechBeauty.Dominio.Modelo
     public class ContratoTrabalho
     {
         public int Id { get; private set; }
+        public int RegimeContratualID { get; set; }
         public RegimeContratual RegimeContratual { get; private set; }
         public DateTime DataEntrada { get; private set; }
         public DateTime? DataDesligamento { get; private set; }
-        public List<Cargo> Cargos { get; private set; }
+
+        // public List<Cargo> Cargos { get; private set; }
+        public List<CargoContratoTrabalho> CargosContratosTrabalho { get; set; }
         public string CnpjCTPS { get; private set; }
 
         // Propriedades dos Sistema Financeiro ---------------

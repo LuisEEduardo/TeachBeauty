@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechBeauty.Csl", "TechBeauty.Csl\TechBeauty.Csl.csproj", "{49502348-DA09-47F2-83E8-DEF9E223EDDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechBeauty.Csl", "TechBeauty.Csl\TechBeauty.Csl.csproj", "{49502348-DA09-47F2-83E8-DEF9E223EDDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechBeauty.Dominio", "TechBeauty.Dominio\TechBeauty.Dominio.csproj", "{FADFF082-9A11-4F90-B55A-4B6607DA7364}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechBeauty.Dominio", "TechBeauty.Dominio\TechBeauty.Dominio.csproj", "{FADFF082-9A11-4F90-B55A-4B6607DA7364}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechBeauty.Dados", "TechBeauty.Dados\TechBeauty.Dados.csproj", "{5F9DB7DB-8FD0-439F-8F8F-6AF670CCCD28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FADFF082-9A11-4F90-B55A-4B6607DA7364}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FADFF082-9A11-4F90-B55A-4B6607DA7364}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FADFF082-9A11-4F90-B55A-4B6607DA7364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F9DB7DB-8FD0-439F-8F8F-6AF670CCCD28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F9DB7DB-8FD0-439F-8F8F-6AF670CCCD28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F9DB7DB-8FD0-439F-8F8F-6AF670CCCD28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F9DB7DB-8FD0-439F-8F8F-6AF670CCCD28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

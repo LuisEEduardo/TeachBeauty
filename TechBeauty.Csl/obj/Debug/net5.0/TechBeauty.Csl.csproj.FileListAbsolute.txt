@@ -16,4 +16,3 @@ C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Csl\obj\Debug\net5.0\Tech
 C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Csl\obj\Debug\net5.0\ref\TechBeauty.Csl.dll
 C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Csl\obj\Debug\net5.0\TechBeauty.Csl.pdb
 C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Csl\obj\Debug\net5.0\TechBeauty.Csl.genruntimeconfig.cache
-C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Csl\obj\Debug\net5.0\TechBeauty.Csl.csproj.CopyComplete

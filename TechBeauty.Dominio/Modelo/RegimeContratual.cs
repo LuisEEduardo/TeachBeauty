@@ -1,9 +1,12 @@
-﻿namespace TechBeauty.Dominio.Modelo
+﻿using System.Collections.Generic;
+
+namespace TechBeauty.Dominio.Modelo
 {
     public class RegimeContratual
     {
         public int Id { get; private set; }
         public string Valor { get; private set; }
+        public List<ContratoTrabalho> ContratosDeTrabalho { get; set; } 
 
         public static RegimeContratual Criar(int id, string valor)
         {

@@ -1,11 +1,13 @@
-﻿namespace TechBeauty.Dominio.Modelo
+﻿using System.Collections.Generic;
+
+namespace TechBeauty.Dominio.Modelo
 {
     public class Cargo
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
-
+        public List<CargoContratoTrabalho> CargoContratoTrabalhos { get; set; }
         public static Cargo Criar(int id, string nome, string descricao = "Não definiu")
         {
             Cargo cargo = new Cargo();

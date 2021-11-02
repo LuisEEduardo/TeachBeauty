@@ -2,7 +2,7 @@
 using TechBeauty.Dominio.Modelo;
 using System.Linq;
 
-namespace TechBeauty.Dominio.Repositorio
+namespace TechBeauty.Dados.Repositorio
 {
     public class GeneroRepositorio
     {

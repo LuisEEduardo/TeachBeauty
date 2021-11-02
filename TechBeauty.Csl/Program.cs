@@ -35,14 +35,6 @@ namespace TechBeauty.Csl
 
             ClienteRepositorio repoCliente = new ClienteRepositorio(contatos);
 
-            foreach (var cliente in repoCliente.TabelaCliente)
-            {
-                Console.WriteLine($"Id: {cliente.Id}, Nome: {cliente.Nome}, Contato: {cliente.Contatos[0].Valor}," +
-                    $" Cpf: {cliente.CPF}, Data de Nascimento: {cliente.DataNascimento}");
-                Console.WriteLine($"{cliente.ListarContatos()}");
-            }
-
-
         }
 
     }
