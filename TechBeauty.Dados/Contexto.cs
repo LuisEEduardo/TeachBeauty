@@ -7,12 +7,23 @@ namespace TechBeauty.Dados
 {
     public class Contexto : DbContext
     {
+        public DbSet<Agendamento> Agendamento { get; set; }
         public DbSet<CargoContratoTrabalho> CargoContratoTrabalho { get; set; }
         public DbSet<Cargo> Cargo { get; set; }
-        public DbSet<ContratoTrabalho> ContratoTrabalho { get; set; }
-        public DbSet<TipoContato> TipoContato { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Colaborador> Colaborador { get; set; }
         public DbSet<Contato> Contato { get; set; }
+        public DbSet<ContratoTrabalho> ContratoTrabalho { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
+        public DbSet<Escala> Escala { get; set; }
+        public DbSet<Genero> Genero { get; set; }
+        public DbSet<LogAgendamento> LogAgendamentos { get; set; }
+        public DbSet<OrdemServico> OrdemServico { get; set; }
+        public DbSet<Pessoa> Pessoa { get; set; }
+        public DbSet<RegimeContratual> RegimeContratual { get; set; }
+        public DbSet<ServicoColaborador> ServicoColaborador { get; set; }
+        public DbSet<Servico> Servico { get; set; }
+        public DbSet<TipoContato> TipoContato { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -23,13 +34,23 @@ namespace TechBeauty.Dados
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new AgendamentoMap());
             modelBuilder.ApplyConfiguration(new CargoContratoTrabalhoMap());
             modelBuilder.ApplyConfiguration(new CargoMap());
-            modelBuilder.ApplyConfiguration(new RegimeContratualMap());
-            modelBuilder.ApplyConfiguration(new ContratoTrabalhoMap());
-            modelBuilder.ApplyConfiguration(new TipoContatoMap());
+            modelBuilder.ApplyConfiguration(new ClienteMap());
+            modelBuilder.ApplyConfiguration(new ColaboradorMap());
             modelBuilder.ApplyConfiguration(new ContatoMap());
+            modelBuilder.ApplyConfiguration(new ContratoTrabalhoMap());
             modelBuilder.ApplyConfiguration(new EnderecoMap());
+            modelBuilder.ApplyConfiguration(new EscalaMap());
+            modelBuilder.ApplyConfiguration(new GeneroMap());
+            modelBuilder.ApplyConfiguration(new LogAgendamentoMap());
+            modelBuilder.ApplyConfiguration(new OrdemServicoMap());
+            modelBuilder.ApplyConfiguration(new PessoaMap());
+            modelBuilder.ApplyConfiguration(new RegimeContratualMap());
+            modelBuilder.ApplyConfiguration(new ServicoColaboradorMap());
+            modelBuilder.ApplyConfiguration(new ServicoMap());
+            modelBuilder.ApplyConfiguration(new TipoContatoMap());
 
             base.OnModelCreating(modelBuilder);
         }
