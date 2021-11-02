@@ -11,7 +11,7 @@ namespace TechBeauty.Dominio.Modelo
         public FormasPagamento FormaPagamento{ get; private set; }
         public DateTime DataPagamento { get; private set; }
         public decimal ValorComissao { get; private set; }
-
+        public int FormasPagamentoID { get; set; }
         protected abstract void CalcPagamento();
 
         protected void CalcValorComicao(int porcentagem)
