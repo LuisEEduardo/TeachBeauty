@@ -21,10 +21,6 @@ namespace TechBeauty.Dados.Map
             builder.Property(x => x.DataHoraSaida)
                 .HasColumnType("DATE")
                 .IsRequired();
-
-            builder.Property(x => x.Colaborador)
-                .HasColumnType("")
-
         }
     }
 }

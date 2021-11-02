@@ -5,6 +5,9 @@ namespace TechBeauty.Dominio.Modelo
 {
     public class Cliente : Pessoa
     {
+
+        public List<OrdemServico> OrdensServico { get; set; }
+
         public static Cliente Criar(int id, string nome, string cpf, DateTime dataNascimento, List<Contato> contatos)
         {
             Cliente cliente = new Cliente();

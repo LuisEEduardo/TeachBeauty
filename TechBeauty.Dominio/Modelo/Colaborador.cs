@@ -13,6 +13,9 @@ namespace TechBeauty.Dominio.Modelo
         public int EnderecoID { get; set; }
         public int GeneroID { get; set; }
         public List<Escala> Escalas { get; set; }
+        public int ContratoTrabalhoID { get; set; }
+        public List<ServicoColaborador> ServicosColaborador { get; set; }
+        public List<Agendamento> Agendamentos { get; set; }
 
         public static Colaborador Criar(
             List<Servico> servicos, 

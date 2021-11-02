@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TechBeauty.Dominio.Modelo
 {
@@ -9,10 +10,14 @@ namespace TechBeauty.Dominio.Modelo
         public Servico Servico { get; private set; }
         public Colaborador Colaborador { get; private set; }
         public string PessoaAtendia { get; private set; }
-        public DateTime DataHora { get; private set; }
+        public DateTime DataHoraInicio { get; private set; }
         public OrdemServico OS { get; private set; }
         public DateTime DataHoraCriacao { get; private set; }
-        public DateTime DataHoraExecucao { get; private set; }
+        public DateTime DataHoraTermino { get; private set; }
+        public int ServicoID { get; set; }
+        public int ColaboradorID { get; set; }
+        public int OrdemServicoID { get; set; }
+        public List<LogAgendamento> LogsAgendamento { get; set; }
 
         public static Agendamento Criar(int id, Servico servico, Colaborador colaborador,
             string pessoaAtendia, DateTime dataHora, OrdemServico os, DateTime dataHoraCriacao,

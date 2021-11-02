@@ -28,6 +28,11 @@ namespace TechBeauty.Dados.Map
             builder.Property(x => x.DataNascimento)
                 .HasColumnType("DATE")
                 .IsRequired();
+
+            builder.HasMany<Contato>
+                (c => c.Contatos)
+                .WithOne(p => p.Pessoa)
+                .HasForeignKey(p => p.PessoaID);
         }
     }
 }

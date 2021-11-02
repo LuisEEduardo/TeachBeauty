@@ -9,7 +9,8 @@ namespace TechBeauty.Dominio.Modelo
         public string Nome { get; protected set; }
         public string CPF { get; protected set; }
         public DateTime DataNascimento { get; protected set; }
-        public List<ContatoPessoa> ContatosPessoa { get; set; }
+        public List<Contato> Contatos { get; set; }
+
 
         public bool ValidaCPF()
         {
