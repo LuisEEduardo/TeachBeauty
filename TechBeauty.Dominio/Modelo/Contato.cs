@@ -6,6 +6,7 @@
         public int Id { get; private set; }
         public TipoContato Tipo { get; private set; }
         public string Valor { get; private set; }
+        public int TipoContatoID { get; set; }
 
         public static Contato Criar(int id, TipoContato tipoContato, string valor)
         {
