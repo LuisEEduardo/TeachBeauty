@@ -30,7 +30,5 @@ namespace TechBeauty.Dominio.Modelo
         {
             DataHoraSaida = dataHoraSaida;
         }
-
-
     }
 }

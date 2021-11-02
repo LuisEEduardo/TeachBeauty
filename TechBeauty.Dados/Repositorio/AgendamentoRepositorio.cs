@@ -20,12 +20,14 @@ namespace TechBeauty.Dados.Repositorio
             TabelaAgendamento.Add(agendamento);
         }
 
-        public void Alterar(int id, Servico servico, Colaborador colaborador,
+        /*
+                 public void Alterar(int id, Servico servico, Colaborador colaborador,
             string pessoaAtendida, DateTime dataHora, OrdemServico os, DateTime dataHoraCriacao,
             DateTime dataHoraExecucao)
         {
             TabelaAgendamento.FirstOrDefault(x => x.Id == id).Alterar(servico, colaborador, pessoaAtendida, dataHora, os, dataHoraCriacao, dataHoraExecucao);
         }
+         */
 
         public Agendamento SelecionarPorId(int id)
         {

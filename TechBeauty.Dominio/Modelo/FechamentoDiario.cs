@@ -11,7 +11,6 @@ namespace TechBeauty.Dominio.Modelo
         public decimal ValorFechamento { get; private set; }
         public List<Servico> ServicosRealizados { get; set; }
 
-
         public void calcFechamentoDia()
         {
             foreach (PagamentoCliente pagamento in Pagamentos)
@@ -23,7 +22,6 @@ namespace TechBeauty.Dominio.Modelo
             }
         }
 
-
         public void PreencheServico()
         {
             foreach (PagamentoCliente pagamento in Pagamentos)
@@ -34,7 +32,6 @@ namespace TechBeauty.Dominio.Modelo
                 }
             }
         }
-
 
         public void AddPagamento(PagamentoCliente pagamento)
         {

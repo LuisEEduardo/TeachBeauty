@@ -23,14 +23,14 @@ namespace TechBeauty.Dominio.Modelo
         public static ContratoTrabalho Criar(int Id,
             RegimeContratual regimeContratual,
             DateTime dataEntrada,
-            List<Cargo> cargos,
+            List<CargoContratoTrabalho> cargosContratosTrabalhos,
             string cnpjCTPS)
         {
             ContratoTrabalho contratoTrabalho = new ContratoTrabalho();
             contratoTrabalho.Id = Id;
             contratoTrabalho.RegimeContratual = regimeContratual;
             contratoTrabalho.DataEntrada = dataEntrada;
-            contratoTrabalho.Cargos = cargos;
+            contratoTrabalho.CargosContratosTrabalho = cargosContratosTrabalhos;
             contratoTrabalho.CnpjCTPS = cnpjCTPS;
             return contratoTrabalho;
         }
@@ -56,14 +56,14 @@ namespace TechBeauty.Dominio.Modelo
             RegimeContratual = regimeContratual;
         }
 
-        public void AddCargo(Cargo cargo)
+        public void AddCargo(CargoContratoTrabalho cargosContratoTrabalho)
         {
-            Cargos.Add(cargo);
+            CargosContratosTrabalho.Add(cargosContratoTrabalho);
         }
 
-        public void RemoverCargo(Cargo cargo)
+        public void RemoverCargo(CargoContratoTrabalho cargosContratoTrabalho)
         {
-            Cargos.Remove(cargo);
+            CargosContratosTrabalho.Remove(cargosContratoTrabalho);
         }
 
         public void AddDataDesligamento(DateTime data)

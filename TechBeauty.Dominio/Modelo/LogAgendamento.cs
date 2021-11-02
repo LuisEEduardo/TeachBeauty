@@ -21,12 +21,10 @@ namespace TechBeauty.Dominio.Modelo
             return logAgendamento;
         }
 
-
         public void AlterarStatus(StatusAgendamento status)
         {
             Status = status;
         }
-
 
     }
 }

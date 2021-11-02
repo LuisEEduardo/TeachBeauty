@@ -10,8 +10,8 @@ namespace TechBeauty.Dominio.Modelo
         public Servico Servico { get; private set; }
         public Colaborador Colaborador { get; private set; }
         public string PessoaAtendia { get; private set; }
-        public DateTime DataHoraInicio { get; private set; }
         public OrdemServico OS { get; private set; }
+        public DateTime DataHoraInicio { get; private set; }
         public DateTime DataHoraCriacao { get; private set; }
         public DateTime DataHoraTermino { get; private set; }
         public int ServicoID { get; set; }
@@ -20,18 +20,18 @@ namespace TechBeauty.Dominio.Modelo
         public List<LogAgendamento> LogsAgendamento { get; set; }
 
         public static Agendamento Criar(int id, Servico servico, Colaborador colaborador,
-            string pessoaAtendia, DateTime dataHora, OrdemServico os, DateTime dataHoraCriacao,
-            DateTime dataHoraExecucao)
+            string pessoaAtendia, DateTime dataHoraInicio, OrdemServico os, DateTime dataHoraCriacao,
+            DateTime dataHoraTermino)
         {
             Agendamento agendamento = new Agendamento();
             agendamento.Id = id;
             agendamento.Servico = servico;
             agendamento.Colaborador = colaborador;
             agendamento.PessoaAtendia = pessoaAtendia;
-            agendamento.DataHora = dataHora;
+            agendamento.DataHoraInicio = dataHoraInicio;
             agendamento.OS = os;
             agendamento.DataHoraCriacao = dataHoraCriacao;
-            agendamento.DataHoraExecucao = dataHoraExecucao;
+            agendamento.DataHoraTermino = dataHoraTermino;
             return agendamento;
         }
 
@@ -56,9 +56,9 @@ namespace TechBeauty.Dominio.Modelo
             PessoaAtendia = pessoaAtendida;
         }
 
-        public void Remarcar(DateTime dataHoraExecucao)
+        public void Remarcar(DateTime dataHoraInicio)
         {
-            DataHoraExecucao = dataHoraExecucao;
+            DataHoraInicio = dataHoraInicio;
         }
 
     }

@@ -5,13 +5,11 @@ namespace TechBeauty.Dominio.Modelo
 {
     class PagamentoColaboradorPJ : PagamentoColaborador
     {
-
         public List<Agendamento> AgendamentosDia { get; private set; } = new List<Agendamento>(); 
-
 
         public void AddAgendamentoRealizadosPorDia(Agendamento agendamento)
         {
-            if (agendamento.DataHoraExecucao == DateTime.Now)
+            if (agendamento.DataHoraInicio == DateTime.Now)
             {
                 AgendamentosDia.Add(agendamento);
             }
@@ -19,7 +17,7 @@ namespace TechBeauty.Dominio.Modelo
 
         public void RemoveAgendamentoPorDia(Agendamento agendamento)
         {
-            if (agendamento.DataHoraExecucao == DateTime.Now)
+            if (agendamento.DataHoraInicio == DateTime.Now)
             {
                 AgendamentosDia.Remove(agendamento);
             }
@@ -32,7 +30,7 @@ namespace TechBeauty.Dominio.Modelo
             {
                 salarioDia += agendamento.Servico.Preco; 
             }
-            Colaborador.Contrato.AlterarSalario(salarioDia);
+            Colaborador.ContratoTrabalho.AlterarSalario(salarioDia);
         }
     }
 }

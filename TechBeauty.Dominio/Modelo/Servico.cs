@@ -46,5 +46,4 @@ namespace TechBeauty.Dominio.Modelo
 
     }
 
-
 }

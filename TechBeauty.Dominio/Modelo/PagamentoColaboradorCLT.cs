@@ -4,7 +4,7 @@
     {
         protected override void CalcPagamento()
         {
-            Colaborador.Contrato.AlterarSalario(Colaborador.Contrato.Salario + ValorComissao); 
+            Colaborador.ContratoTrabalho.AlterarSalario(Colaborador.ContratoTrabalho.Salario + ValorComissao); 
         }
     }
 }

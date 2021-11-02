@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dados.Repositorio;
 using TechBeauty.Dominio.Modelo;
-using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Csl
 {
@@ -32,8 +32,13 @@ namespace TechBeauty.Csl
                 contatos.Add(c);
             }
 
-
             ClienteRepositorio repoCliente = new ClienteRepositorio(contatos);
+
+            Console.WriteLine("---------------------------------------------------------");
+
+            Pessoa p = new Pessoa();
+
+            Console.WriteLine(p.ValidaCPF("12345678900"));
 
         }
 
