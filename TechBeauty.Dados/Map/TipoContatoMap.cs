@@ -20,6 +20,11 @@ namespace TechBeauty.Dados.Map
             builder.Property(x => x.Valor)
                 .HasColumnType("VARCHAR(30)");
 
+            builder.HasMany<Contato>
+                (c => c.Contatos)
+                .WithOne(tp => tp.Tipo)
+                .HasForeignKey(f => f.TipoContatoID);
+
         }
     }
 }
