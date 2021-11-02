@@ -9,9 +9,8 @@ namespace TechBeauty.Dominio.Modelo
         public string Nome { get; protected set; }
         public string CPF { get; protected set; }
         public DateTime DataNascimento { get; protected set; }
-        public List<Contato> Contatos { get; protected set; }
+        public List<ContatoPessoa> ContatosPessoa { get; set; }
 
-        
         public bool ValidaCPF()
         {
             return true; 
@@ -26,7 +25,6 @@ namespace TechBeauty.Dominio.Modelo
         {
             Nome = nome; 
         }
-
 
         public void AddContato(Contato contato)
         {

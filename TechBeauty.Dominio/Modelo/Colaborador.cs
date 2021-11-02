@@ -10,6 +10,9 @@ namespace TechBeauty.Dominio.Modelo
         public Genero Genero { get; private set; }
         public string NomeSocial { get; private set; }
         public ContratoTrabalho ContratoTrabalho { get; private set; }
+        public int EnderecoID { get; set; }
+        public int GeneroID { get; set; }
+        public List<Escala> Escalas { get; set; }
 
         public static Colaborador Criar(
             List<Servico> servicos, 

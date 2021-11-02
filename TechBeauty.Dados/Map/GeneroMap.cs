@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Map
 {
-    class TipoContatoMap : IEntityTypeConfiguration<TipoContato>
+    class GeneroMap : IEntityTypeConfiguration<Genero>
     {
-        public void Configure(EntityTypeBuilder<TipoContato> builder)
+        public void Configure(EntityTypeBuilder<Genero> builder)
         {
-            builder.ToTable("TipoContato");
+            builder.ToTable("Genero");
 
             builder.HasKey(x => x.Id);
 
@@ -16,10 +17,10 @@ namespace TechBeauty.Dados.Map
                 .HasColumnType("VARCHAR(30)")
                 .IsRequired();
 
-            builder.HasMany<Contato>
-                (c => c.Contatos)
-                .WithOne(tp => tp.Tipo)
-                .HasForeignKey(f => f.TipoContatoID);
+            builder.HasMany<Colaborador>
+                (c => c.Colaboradores)
+                .WithOne(g => g.Genero)
+                .HasForeignKey(g => g.GeneroID);                 
 
         }
     }

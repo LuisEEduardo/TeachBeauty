@@ -1,4 +1,6 @@
-﻿namespace TechBeauty.Dominio.Modelo
+﻿using System.Collections.Generic;
+
+namespace TechBeauty.Dominio.Modelo
 {
     public class Contato
     {
@@ -7,6 +9,7 @@
         public TipoContato Tipo { get; private set; }
         public string Valor { get; private set; }
         public int TipoContatoID { get; set; }
+        public List<ContatoPessoa> ContatoPessoa { get; set; }
 
         public static Contato Criar(int id, TipoContato tipoContato, string valor)
         {

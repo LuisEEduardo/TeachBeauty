@@ -10,6 +10,9 @@ namespace TechBeauty.Dados
         public DbSet<CargoContratoTrabalho> CargoContratoTrabalho { get; set; }
         public DbSet<Cargo> Cargo { get; set; }
         public DbSet<ContratoTrabalho> ContratoTrabalho { get; set; }
+        public DbSet<TipoContato> TipoContato { get; set; }
+        public DbSet<Contato> Contato { get; set; }
+        public DbSet<Endereco> Endereco { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,8 +24,13 @@ namespace TechBeauty.Dados
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CargoContratoTrabalhoMap());
+            modelBuilder.ApplyConfiguration(new CargoMap());
             modelBuilder.ApplyConfiguration(new RegimeContratualMap());
             modelBuilder.ApplyConfiguration(new ContratoTrabalhoMap());
+            modelBuilder.ApplyConfiguration(new TipoContatoMap());
+            modelBuilder.ApplyConfiguration(new ContatoMap());
+            modelBuilder.ApplyConfiguration(new EnderecoMap());
+
             base.OnModelCreating(modelBuilder);
         }
 
