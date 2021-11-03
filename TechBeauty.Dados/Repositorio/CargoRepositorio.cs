@@ -19,9 +19,9 @@ namespace TechBeauty.Dados.Repositorio
             TabelaCargo.Add(cargo);
         }
 
-        public void Alterar(int id, string nome, string descricao)
+        public void Alterar(int id, string descricao)
         {
-            TabelaCargo.FirstOrDefault(x => x.Id == id).Alterar(nome, descricao);
+            TabelaCargo.FirstOrDefault(x => x.Id == id).MudarDescricao(descricao);
         }
 
         public Cargo SelecionarPorId(int id)

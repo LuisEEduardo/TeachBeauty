@@ -22,7 +22,8 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Alterar(int id, decimal precoTotal, int duracaoTotal, Cliente cliente, StatusOS status)
         {
-            TabelaOrdemServico.FirstOrDefault(x => x.Id == id).Alterar(precoTotal, duracaoTotal, cliente, status);
+            //TabelaOrdemServico.FirstOrDefault(x => x.Id == id).Alterar(precoTotal, duracaoTotal, cliente, status);
+            TabelaOrdemServico.FirstOrDefault(x => x.Id == id).AlterarCliente(cliente);
         }
         
         public OrdemServico SelecionarPorId(int id)

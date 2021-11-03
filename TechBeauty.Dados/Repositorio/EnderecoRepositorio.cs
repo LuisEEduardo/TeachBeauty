@@ -36,10 +36,10 @@ namespace TechBeauty.Dados.Repositorio
 
         private void PreencherDados()
         {
-            TabelaEndereco.Add(Endereco.Criar(1, "n sei", "Bsb", "DF", "12", "A"));
-            TabelaEndereco.Add(Endereco.Criar(2, "n sei", "Bsb", "DF", "13", "B"));
-            TabelaEndereco.Add(Endereco.Criar(3, "n sei", "Bsb", "DF", "14", "C"));
-            TabelaEndereco.Add(Endereco.Criar(4, "n sei", "Bsb", "DF", "15", "D"));
+            TabelaEndereco.Add(Endereco.Criar(1, "n sei", "Bsb", "DF", "12", "A", "avenida do lago"));
+            TabelaEndereco.Add(Endereco.Criar(2, "n sei", "Bsb", "DF", "13", "B", "avenida do lago"));
+            TabelaEndereco.Add(Endereco.Criar(3, "n sei", "Bsb", "DF", "14", "C", "avenida do lago"));
+            TabelaEndereco.Add(Endereco.Criar(4, "n sei", "Bsb", "DF", "15", "D", "avenida do lago"));
         }
 
     }

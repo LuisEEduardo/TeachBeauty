@@ -5,7 +5,6 @@ namespace TechBeauty.Dominio.Modelo
 {
     public class Agendamento
     {
-
         public int Id { get; private set; }
         public Servico Servico { get; private set; }
         public Colaborador Colaborador { get; private set; }

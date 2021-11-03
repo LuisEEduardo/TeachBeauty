@@ -21,7 +21,8 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Alterar(int id, string nome, decimal preco, string descricao, int duracaoEmMin)
         {
-            TabelaServico.FirstOrDefault(x => x.Id == id).Alterar(nome, preco, descricao, duracaoEmMin);
+            //TabelaServico.FirstOrDefault(x => x.Id == id).Alterar(nome, preco, descricao, duracaoEmMin);
+            TabelaServico.FirstOrDefault(x => x.Id == id).AlterarNome(nome);
         }
 
         public Servico SelecionarPorId(int id)

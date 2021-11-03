@@ -25,7 +25,7 @@ namespace TechBeauty.Dados.Map
                 .HasColumnType("DECIMAL(6, 2)")
                 .IsRequired();
 
-            builder.HasMany<PagamentoColaboradorPJMap>
+            builder.HasMany<PagamentoColaboradorPJ>
                 (pj => pj.PagamentoColaboradorPJ)
                 .WithOne(pc => pc.PagamentoColaborador)
                 .HasForeignKey(pc => pc.PagamentoColaboradorID);

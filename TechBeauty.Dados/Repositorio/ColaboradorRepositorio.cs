@@ -26,7 +26,8 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Alterar(int id, List<Servico> servicos, Endereco endereco, Genero genero, string nomeSocial, ContratoTrabalho contrato)
         {
-            TabelaColaborador.FirstOrDefault(x => x.Id == id).Alterar(servicos, endereco, genero, nomeSocial, contrato);
+            //TabelaColaborador.FirstOrDefault(x => x.Id == id).Alterar(servicos, endereco, genero, nomeSocial, contrato);
+            TabelaColaborador.FirstOrDefault(x => x.Id == id).AlterarNomeSocial(nomeSocial);
         }
 
         public Colaborador SelecionarPorId(int id)
@@ -60,9 +61,9 @@ namespace TechBeauty.Dados.Repositorio
             List<Servico> servicos2 = new List<Servico>() { s3 };
 
             TabelaColaborador.Add(Colaborador.Criar(servicos1, endereco, genero,
-                null, contratoTrabalho, "Maria", "12345678", new DateTime(2000, 10, 1), contatos1));
+                "", contratoTrabalho, 1, "Maria", "12345678", new DateTime(2000, 10, 1), contatos1));
             TabelaColaborador.Add(Colaborador.Criar(servicos2, endereco, genero, "",
-                contratoTrabalho, "Taison", "1232323232", new DateTime(1999, 1, 1), contatos2));
+                contratoTrabalho, 2,"Taison", "1232323232", new DateTime(1999, 1, 1), contatos2));
         }
 
     }

@@ -20,9 +20,9 @@ namespace TechBeauty.Dados.Repositorio
             TabelaCliente.Add(cliente);
         }
 
-        public void Alterar(int id, string nome, string cpf, DateTime dataNascimento, List<Contato> contatos)
+        public void Alterar(int id, string nome, List<Contato> contatos)
         {
-            TabelaCliente.FirstOrDefault(x => x.Id == id).Alterar(nome, cpf, dataNascimento, contatos); 
+            TabelaCliente.FirstOrDefault(x => x.Id == id).AlterarNome(nome); 
         }
 
         public Cliente SelecionarPorId(int id)

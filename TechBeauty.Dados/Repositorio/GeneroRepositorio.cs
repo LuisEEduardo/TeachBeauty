@@ -22,7 +22,7 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Alterar(int id, string valor)
         {
-            TabelaGenero.FirstOrDefault(x => x.Id == id).Alterar(valor);
+            TabelaGenero.FirstOrDefault(x => x.Id == id).AlterarValor(valor);
         }
 
         public Genero SelecionarPorId(int id)

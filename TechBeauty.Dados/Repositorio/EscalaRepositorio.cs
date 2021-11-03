@@ -21,7 +21,8 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Alterar(int id, DateTime dataHoraEntrada, DateTime dataHoraSaida)
         {
-            TabelaEscala.FirstOrDefault(x => x.Id == id).Alterar(dataHoraEntrada, dataHoraSaida); 
+            // TabelaEscala.FirstOrDefault(x => x.Id == id).Alterar(dataHoraEntrada, dataHoraSaida); 
+            TabelaEscala.FirstOrDefault(x => x.Id == id).AlterarDataHoraEntrada(dataHoraEntrada);
         }
 
         public Escala SelecionarPorId(int id)

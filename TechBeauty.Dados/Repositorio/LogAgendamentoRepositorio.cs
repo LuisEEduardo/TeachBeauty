@@ -23,12 +23,12 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Alterar(int idAgendamento, StatusAgendamento status)
         {
-            TabelaLogAgendamento.FirstOrDefault(x => x.IdAgendamento == idAgendamento).AlterarStatus(status);
+            TabelaLogAgendamento.FirstOrDefault(x => x.AgendamentoID == idAgendamento).AlterarStatus(status);
         }
 
         public LogAgendamento SelecionarPorId(int idAgendamento)
         {
-            return TabelaLogAgendamento.FirstOrDefault(x => x.IdAgendamento == idAgendamento);
+            return TabelaLogAgendamento.FirstOrDefault(x => x.AgendamentoID == idAgendamento);
         }
 
         public void Excluir(int idAgendamento)
@@ -38,9 +38,9 @@ namespace TechBeauty.Dados.Repositorio
 
         private void PreencherDados(StatusAgendamento status)
         {
-            TabelaLogAgendamento.Add(LogAgendamento.Criar(new DateTime(2021, 10, 22), status, 2)); 
-            TabelaLogAgendamento.Add(LogAgendamento.Criar(new DateTime(2021, 10, 20), status, 3)); 
-            TabelaLogAgendamento.Add(LogAgendamento.Criar(new DateTime(2021, 10, 10), status, 1)); 
+            TabelaLogAgendamento.Add(LogAgendamento.Criar(new DateTime(2021, 10, 22), status)); 
+            TabelaLogAgendamento.Add(LogAgendamento.Criar(new DateTime(2021, 10, 20), status)); 
+            TabelaLogAgendamento.Add(LogAgendamento.Criar(new DateTime(2021, 10, 10), status)); 
         }
 
 

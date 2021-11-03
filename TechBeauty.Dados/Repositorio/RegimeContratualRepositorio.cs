@@ -21,7 +21,7 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Alterar(int id, string valor)
         {
-            TabelaRegimeContratual.FirstOrDefault(x => x.Id == id).Alterar(valor); 
+            TabelaRegimeContratual.FirstOrDefault(x => x.Id == id).AlterarValor(valor); 
         }
 
         public RegimeContratual SelecionarCargoPorId(int id)

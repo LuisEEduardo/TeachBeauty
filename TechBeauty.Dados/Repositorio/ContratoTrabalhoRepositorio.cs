@@ -10,7 +10,7 @@ namespace TechBeauty.Dados.Repositorio
 
         public List<ContratoTrabalho> TabelaContratoTrabalho { get; private set; } = new List<ContratoTrabalho>();
 
-        public ContratoTrabalhoRepositorio(RegimeContratual regimeContratual, List<Cargo> cargos)
+        public ContratoTrabalhoRepositorio(RegimeContratual regimeContratual, List<CargoContratoTrabalho> cargos)
         {
             PreencherDados(regimeContratual, cargos);
         }
@@ -27,7 +27,8 @@ namespace TechBeauty.Dados.Repositorio
             List<Cargo> cargos,
             string cnpjCTPS)
         {
-            TabelaContratoTrabalho.FirstOrDefault(x => x.Id == id).Alterar(regimeContratual, dataEntrada, dataDesligamento, cargos, cnpjCTPS);
+            // TabelaContratoTrabalho.FirstOrDefault(x => x.Id == id).Alterar(regimeContratual, dataEntrada, dataDesligamento, cargos, cnpjCTPS);
+            TabelaContratoTrabalho.FirstOrDefault(x => x.Id == id).AlterarCnpjCTPS(cnpjCTPS);
         }
 
         public ContratoTrabalho SelecionarPorId(int id)
@@ -40,19 +41,20 @@ namespace TechBeauty.Dados.Repositorio
             TabelaContratoTrabalho.Remove(SelecionarPorId(id));
         }
 
-        private void PreencherDados(RegimeContratual regimeContratual, List<Cargo> cargos)
+        private void PreencherDados(RegimeContratual regimeContratual, List<CargoContratoTrabalho> cargos)
         {
-
+            /*
             var cabelereira = cargos.Where(x => x.Id == 1).FirstOrDefault();
             var manicure = cargos.Where(x => x.Id == 2).FirstOrDefault();
             var depiladora = cargos.Where(x => x.Id == 3).FirstOrDefault();
             var colorista = cargos.Where(x => x.Id == 4).FirstOrDefault();
+           
+            List<CargoContratoTrabalho> cargo1 = new List<Cargo>() { cabelereira, depiladora };
+            List<CargoContratoTrabalho> cargo2 = new List<CargoContratoTrabalho>() { manicure, colorista };
+             */
 
-            List<Cargo> cargo1 = new List<Cargo>() { cabelereira, depiladora };
-            List<Cargo> cargo2 = new List<Cargo>() { manicure, colorista };
-
-            TabelaContratoTrabalho.Add(ContratoTrabalho.Criar(1, regimeContratual, DateTime.Now, null, cargo1, "1234"));
-            TabelaContratoTrabalho.Add(ContratoTrabalho.Criar(2, regimeContratual, DateTime.Now, null, cargo2, "12389"));
+            TabelaContratoTrabalho.Add(ContratoTrabalho.Criar(1, regimeContratual, DateTime.Now, cargos, "1234"));
+            TabelaContratoTrabalho.Add(ContratoTrabalho.Criar(2, regimeContratual, DateTime.Now, cargos, "12389"));
 
         }
 

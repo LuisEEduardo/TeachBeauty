@@ -24,7 +24,7 @@ namespace TechBeauty.Csl
             var regimeContratual = regimeContratualRepositorio.TabelaRegimeContratual[0];
             var cargos = repoCargo.TabelaCargo;
 
-            ContratoTrabalhoRepositorio repoContratoTrabalhoRepositorio = new ContratoTrabalhoRepositorio(regimeContratual, cargos);
+            //ContratoTrabalhoRepositorio repoContratoTrabalhoRepositorio = new ContratoTrabalhoRepositorio(regimeContratual, cargos);
 
             List<Contato> contatos = new List<Contato>();
             foreach (var c in repoContato.TabelaContato)
