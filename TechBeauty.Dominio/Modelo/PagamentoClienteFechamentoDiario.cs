@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TechBeauty.Dominio.Modelo
+﻿namespace TechBeauty.Dominio.Modelo
 {
-    class PagamentoClienteFechamentoDiario
+    public class PagamentoClienteFechamentoDiario
     {
-
-
-
+        public int PagamentoClienteID { get; set; }
+        public int FechamentoDiarioID { get; set; }
+        public PagamentoCliente PagamentoCliente { get; set; }
+        public FechamentoDiario FechamentoDiario { get; set; }
     }
 }

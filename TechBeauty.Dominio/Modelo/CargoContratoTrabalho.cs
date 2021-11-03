@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TechBeauty.Dominio.Modelo
+﻿namespace TechBeauty.Dominio.Modelo
 {
     public class CargoContratoTrabalho
     {

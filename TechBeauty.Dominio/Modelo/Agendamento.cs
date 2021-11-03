@@ -18,6 +18,8 @@ namespace TechBeauty.Dominio.Modelo
         public int ColaboradorID { get; set; }
         public int OrdemServicoID { get; set; }
         public List<LogAgendamento> LogsAgendamento { get; set; }
+        public int PagamentoClienteID { get; set; }
+        public PagamentoCliente PagamentoCliente { get; set; }
 
         public static Agendamento Criar(int id, Servico servico, Colaborador colaborador,
             string pessoaAtendia, DateTime dataHoraInicio, OrdemServico os, DateTime dataHoraCriacao,

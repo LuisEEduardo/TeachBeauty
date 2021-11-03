@@ -7,12 +7,14 @@ namespace TechBeauty.Dominio.Modelo
     public class PagamentoCliente
     {
         public int Id { get; private set; }
-        public List<Agendamento> Agendamentos { get; private set; }
         public DateTime DiaPagamento { get; private set; }
         public FormasPagamento FormasPagamento { get; private set;}
         public StatusPagamento StatusPagamento { get; private set; }
         public decimal Pagamento { get; private set; }
         public List<PagamentoClienteFormasPagamento> PagamentoClienteFormasPagamento { get; set; }
+        public List<PagamentoClienteFechamentoDiario> PagamentoClienteFechamentoDiario { get; set; }
+        public List<Agendamento> Agendamentos { get; private set; }
+
 
         public static PagamentoCliente Criar(int id, List<Agendamento> agendamentos, DateTime diaPagamento, 
             FormasPagamento formasPagamento, StatusPagamento statusAgendamento, decimal pagamento)

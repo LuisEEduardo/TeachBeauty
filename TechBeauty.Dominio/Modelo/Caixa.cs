@@ -10,6 +10,8 @@ namespace TechBeauty.Dominio.Modelo
         public decimal ValorEmCaixa { get; private set; }
         public List<string> DescricaoAdicaoDeValor { get; private set; }
         public List<string> DescricaoRetiradaDeValor { get; private set; }
+        public List<FechamentoDiario> FechamentoDiario { get; set; }
+        public List<PagamentoColaborador> PagamentoColaborador { get; set; }
 
         public void CalcValorTotalFechamento()
         {

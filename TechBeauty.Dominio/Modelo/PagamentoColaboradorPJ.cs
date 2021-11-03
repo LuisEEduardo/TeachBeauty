@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    class PagamentoColaboradorPJ : PagamentoColaborador
+    public class PagamentoColaboradorPJ : PagamentoColaborador
     {
-        public List<Agendamento> AgendamentosDia { get; private set; } = new List<Agendamento>(); 
+        public List<Agendamento> AgendamentosDia { get; private set; } = new List<Agendamento>();
+        public PagamentoColaborador PagamentoColaborador { get; set; }
+        public int PagamentoColaboradorID { get; set; }
 
         public void AddAgendamentoRealizadosPorDia(Agendamento agendamento)
         {
