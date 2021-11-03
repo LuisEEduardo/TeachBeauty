@@ -129,18 +129,11 @@ namespace TechBeauty.Dados.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DataFechamento = table.Column<DateTime>(type: "DATE", nullable: false),
                     ValorFechamento = table.Column<decimal>(type: "DECIMAL(6,2)", nullable: false),
-                    CaixaID = table.Column<int>(type: "int", nullable: false),
-                    CaixaId = table.Column<int>(type: "int", nullable: true)
+                    CaixaID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_FechamentoDiario", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_FechamentoDiario_Caixa_CaixaId",
-                        column: x => x.CaixaId,
-                        principalTable: "Caixa",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_FechamentoDiario_Caixa_CaixaID",
                         column: x => x.CaixaID,
@@ -167,27 +160,36 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ContratoTrabalho",
+                name: "Colaborador",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RegimeContratualID = table.Column<int>(type: "int", nullable: false),
-                    DataEntrada = table.Column<DateTime>(type: "Date", nullable: false),
-                    DataDesligamento = table.Column<DateTime>(type: "Date", nullable: true),
-                    ColaboradorID = table.Column<int>(type: "int", nullable: false),
-                    CnpjCTPS = table.Column<string>(type: "VARCHAR(14)", nullable: false),
-                    Salario = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    NomeSocial = table.Column<string>(type: "VARCHAR(100)", nullable: true),
+                    EnderecoID = table.Column<int>(type: "int", nullable: false),
+                    GeneroID = table.Column<int>(type: "int", nullable: false),
+                    ContratoTrabalhoID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ContratoTrabalho", x => x.Id);
+                    table.PrimaryKey("PK_Colaborador", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ContratoTrabalho_RegimeContratual_RegimeContratualID",
-                        column: x => x.RegimeContratualID,
-                        principalTable: "RegimeContratual",
+                        name: "FK_Colaborador_Endereco_EnderecoID",
+                        column: x => x.EnderecoID,
+                        principalTable: "Endereco",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Colaborador_Genero_GeneroID",
+                        column: x => x.GeneroID,
+                        principalTable: "Genero",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Colaborador_Pessoa_Id",
+                        column: x => x.Id,
+                        principalTable: "Pessoa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -247,6 +249,29 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Servico",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "VARCHAR(50)", nullable: false),
+                    Preco = table.Column<decimal>(type: "DECIMAL(6,2)", nullable: false),
+                    Descricao = table.Column<string>(type: "VARCHAR(150)", nullable: false),
+                    DuracaoEmMin = table.Column<int>(type: "INT", nullable: false),
+                    FechamentoDiarioId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Servico", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Servico_FechamentoDiario_FechamentoDiarioId",
+                        column: x => x.FechamentoDiarioId,
+                        principalTable: "FechamentoDiario",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrdemServico",
                 columns: table => new
                 {
@@ -269,115 +294,31 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CargoContratoTrabalho",
+                name: "ContratoTrabalho",
                 columns: table => new
                 {
-                    CargoID = table.Column<int>(type: "int", nullable: false),
-                    ContratoDeTrabalhoID = table.Column<int>(type: "int", nullable: false),
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RegimeContratualID = table.Column<int>(type: "int", nullable: false),
+                    DataEntrada = table.Column<DateTime>(type: "Date", nullable: false),
+                    DataDesligamento = table.Column<DateTime>(type: "Date", nullable: true),
+                    ColaboradorID = table.Column<int>(type: "int", nullable: false),
+                    CnpjCTPS = table.Column<string>(type: "VARCHAR(14)", nullable: false),
+                    Salario = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CargoContratoTrabalho", x => new { x.CargoID, x.ContratoDeTrabalhoID });
+                    table.PrimaryKey("PK_ContratoTrabalho", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CargoContratoTrabalho_Cargo_CargoID",
-                        column: x => x.CargoID,
-                        principalTable: "Cargo",
+                        name: "FK_ContratoTrabalho_Colaborador_ColaboradorID",
+                        column: x => x.ColaboradorID,
+                        principalTable: "Colaborador",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CargoContratoTrabalho_ContratoTrabalho_ContratoDeTrabalhoID",
-                        column: x => x.ContratoDeTrabalhoID,
-                        principalTable: "ContratoTrabalho",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Colaborador",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false),
-                    NomeSocial = table.Column<string>(type: "VARCHAR(100)", nullable: true),
-                    ContratoTrabalhoId = table.Column<int>(type: "int", nullable: true),
-                    EnderecoID = table.Column<int>(type: "int", nullable: false),
-                    GeneroID = table.Column<int>(type: "int", nullable: false),
-                    ContratoTrabalhoID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Colaborador", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Colaborador_ContratoTrabalho_ContratoTrabalhoId",
-                        column: x => x.ContratoTrabalhoId,
-                        principalTable: "ContratoTrabalho",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Colaborador_Endereco_EnderecoID",
-                        column: x => x.EnderecoID,
-                        principalTable: "Endereco",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Colaborador_Genero_GeneroID",
-                        column: x => x.GeneroID,
-                        principalTable: "Genero",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Colaborador_Pessoa_Id",
-                        column: x => x.Id,
-                        principalTable: "Pessoa",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PagamentoClienteFechamentoDiario",
-                columns: table => new
-                {
-                    PagamentoClienteID = table.Column<int>(type: "int", nullable: false),
-                    FechamentoDiarioID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PagamentoClienteFechamentoDiario", x => new { x.FechamentoDiarioID, x.PagamentoClienteID });
-                    table.ForeignKey(
-                        name: "FK_PagamentoClienteFechamentoDiario_FechamentoDiario_FechamentoDiarioID",
-                        column: x => x.FechamentoDiarioID,
-                        principalTable: "FechamentoDiario",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PagamentoClienteFechamentoDiario_PagamentoCliente_PagamentoClienteID",
-                        column: x => x.PagamentoClienteID,
-                        principalTable: "PagamentoCliente",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PagamentoClienteFormasPagamento",
-                columns: table => new
-                {
-                    PagamentoClienteID = table.Column<int>(type: "int", nullable: false),
-                    FormasPagamentoID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PagamentoClienteFormasPagamento", x => new { x.PagamentoClienteID, x.FormasPagamentoID });
-                    table.ForeignKey(
-                        name: "FK_PagamentoClienteFormasPagamento_FormasPagamento_FormasPagamentoID",
-                        column: x => x.FormasPagamentoID,
-                        principalTable: "FormasPagamento",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PagamentoClienteFormasPagamento_PagamentoCliente_PagamentoClienteID",
-                        column: x => x.PagamentoClienteID,
-                        principalTable: "PagamentoCliente",
+                        name: "FK_ContratoTrabalho_RegimeContratual_RegimeContratualID",
+                        column: x => x.RegimeContratualID,
+                        principalTable: "RegimeContratual",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -440,33 +381,101 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Servico",
+                name: "PagamentoClienteFechamentoDiario",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    Preco = table.Column<decimal>(type: "DECIMAL(6,2)", nullable: false),
-                    Descricao = table.Column<string>(type: "VARCHAR(150)", nullable: false),
-                    DuracaoEmMin = table.Column<int>(type: "INT", nullable: false),
-                    ColaboradorId = table.Column<int>(type: "int", nullable: true),
-                    FechamentoDiarioId = table.Column<int>(type: "int", nullable: true)
+                    PagamentoClienteID = table.Column<int>(type: "int", nullable: false),
+                    FechamentoDiarioID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Servico", x => x.Id);
+                    table.PrimaryKey("PK_PagamentoClienteFechamentoDiario", x => new { x.FechamentoDiarioID, x.PagamentoClienteID });
                     table.ForeignKey(
-                        name: "FK_Servico_Colaborador_ColaboradorId",
-                        column: x => x.ColaboradorId,
-                        principalTable: "Colaborador",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Servico_FechamentoDiario_FechamentoDiarioId",
-                        column: x => x.FechamentoDiarioId,
+                        name: "FK_PagamentoClienteFechamentoDiario_FechamentoDiario_FechamentoDiarioID",
+                        column: x => x.FechamentoDiarioID,
                         principalTable: "FechamentoDiario",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PagamentoClienteFechamentoDiario_PagamentoCliente_PagamentoClienteID",
+                        column: x => x.PagamentoClienteID,
+                        principalTable: "PagamentoCliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PagamentoClienteFormasPagamento",
+                columns: table => new
+                {
+                    PagamentoClienteID = table.Column<int>(type: "int", nullable: false),
+                    FormasPagamentoID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PagamentoClienteFormasPagamento", x => new { x.PagamentoClienteID, x.FormasPagamentoID });
+                    table.ForeignKey(
+                        name: "FK_PagamentoClienteFormasPagamento_FormasPagamento_FormasPagamentoID",
+                        column: x => x.FormasPagamentoID,
+                        principalTable: "FormasPagamento",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PagamentoClienteFormasPagamento_PagamentoCliente_PagamentoClienteID",
+                        column: x => x.PagamentoClienteID,
+                        principalTable: "PagamentoCliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ServicoColaborador",
+                columns: table => new
+                {
+                    ColaboradorID = table.Column<int>(type: "int", nullable: false),
+                    ServicoID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServicoColaborador", x => new { x.ServicoID, x.ColaboradorID });
+                    table.ForeignKey(
+                        name: "FK_ServicoColaborador_Colaborador_ColaboradorID",
+                        column: x => x.ColaboradorID,
+                        principalTable: "Colaborador",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ServicoColaborador_Servico_ServicoID",
+                        column: x => x.ServicoID,
+                        principalTable: "Servico",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CargoContratoTrabalho",
+                columns: table => new
+                {
+                    CargoID = table.Column<int>(type: "int", nullable: false),
+                    ContratoDeTrabalhoID = table.Column<int>(type: "int", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CargoContratoTrabalho", x => new { x.CargoID, x.ContratoDeTrabalhoID });
+                    table.ForeignKey(
+                        name: "FK_CargoContratoTrabalho_Cargo_CargoID",
+                        column: x => x.CargoID,
+                        principalTable: "Cargo",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CargoContratoTrabalho_ContratoTrabalho_ContratoDeTrabalhoID",
+                        column: x => x.ContratoDeTrabalhoID,
+                        principalTable: "ContratoTrabalho",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -513,30 +522,6 @@ namespace TechBeauty.Dados.Migrations
                         name: "FK_PagamentoColaboradorPJ_PagamentoColaborador_PagamentoColaboradorID",
                         column: x => x.PagamentoColaboradorID,
                         principalTable: "PagamentoColaborador",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ServicoColaborador",
-                columns: table => new
-                {
-                    ColaboradorID = table.Column<int>(type: "int", nullable: false),
-                    ServicoID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ServicoColaborador", x => new { x.ServicoID, x.ColaboradorID });
-                    table.ForeignKey(
-                        name: "FK_ServicoColaborador_Colaborador_ColaboradorID",
-                        column: x => x.ColaboradorID,
-                        principalTable: "Colaborador",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ServicoColaborador_Servico_ServicoID",
-                        column: x => x.ServicoID,
-                        principalTable: "Servico",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -644,11 +629,6 @@ namespace TechBeauty.Dados.Migrations
                 column: "ContratoDeTrabalhoID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Colaborador_ContratoTrabalhoId",
-                table: "Colaborador",
-                column: "ContratoTrabalhoId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Colaborador_EnderecoID",
                 table: "Colaborador",
                 column: "EnderecoID");
@@ -669,6 +649,11 @@ namespace TechBeauty.Dados.Migrations
                 column: "TipoContatoID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ContratoTrabalho_ColaboradorID",
+                table: "ContratoTrabalho",
+                column: "ColaboradorID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ContratoTrabalho_RegimeContratualID",
                 table: "ContratoTrabalho",
                 column: "RegimeContratualID");
@@ -677,11 +662,6 @@ namespace TechBeauty.Dados.Migrations
                 name: "IX_Escala_ColaboradorID",
                 table: "Escala",
                 column: "ColaboradorID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FechamentoDiario_CaixaId",
-                table: "FechamentoDiario",
-                column: "CaixaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FechamentoDiario_CaixaID",
@@ -744,11 +724,6 @@ namespace TechBeauty.Dados.Migrations
                 column: "PagamentoColaboradorID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Servico_ColaboradorId",
-                table: "Servico",
-                column: "ColaboradorId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Servico_FechamentoDiarioId",
                 table: "Servico",
                 column: "FechamentoDiarioId");
@@ -789,10 +764,16 @@ namespace TechBeauty.Dados.Migrations
                 name: "Cargo");
 
             migrationBuilder.DropTable(
+                name: "ContratoTrabalho");
+
+            migrationBuilder.DropTable(
                 name: "TipoContato");
 
             migrationBuilder.DropTable(
                 name: "Agendamento");
+
+            migrationBuilder.DropTable(
+                name: "RegimeContratual");
 
             migrationBuilder.DropTable(
                 name: "OrdemServico");
@@ -825,9 +806,6 @@ namespace TechBeauty.Dados.Migrations
                 name: "Caixa");
 
             migrationBuilder.DropTable(
-                name: "ContratoTrabalho");
-
-            migrationBuilder.DropTable(
                 name: "Endereco");
 
             migrationBuilder.DropTable(
@@ -835,9 +813,6 @@ namespace TechBeauty.Dados.Migrations
 
             migrationBuilder.DropTable(
                 name: "Pessoa");
-
-            migrationBuilder.DropTable(
-                name: "RegimeContratual");
         }
     }
 }

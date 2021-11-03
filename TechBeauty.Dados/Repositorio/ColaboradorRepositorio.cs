@@ -14,7 +14,7 @@ namespace TechBeauty.Dados.Repositorio
             List<Servico> servicos,
             Endereco endereco,
             Genero genero,
-            ContratoTrabalho contratoTrabalho)
+            List<ContratoTrabalho> contratoTrabalho)
         {
             PreencherDados(contatos, servicos, endereco, genero, contratoTrabalho);
         }
@@ -44,7 +44,7 @@ namespace TechBeauty.Dados.Repositorio
             List<Servico> servicos,
             Endereco endereco,
             Genero genero,
-            ContratoTrabalho contratoTrabalho)
+            List<ContratoTrabalho> contratoTrabalho)
         {
             Contato c1 = contatos.Where(x => x.Id == 1).FirstOrDefault();
             Contato c2 = contatos.Where(x => x.Id == 2).FirstOrDefault();
@@ -60,9 +60,9 @@ namespace TechBeauty.Dados.Repositorio
             List<Servico> servicos1 = new List<Servico>() { s2, s1 };
             List<Servico> servicos2 = new List<Servico>() { s3 };
 
-            TabelaColaborador.Add(Colaborador.Criar(servicos1, endereco, genero,
+            TabelaColaborador.Add(Colaborador.Criar(endereco, genero,
                 "", contratoTrabalho, 1, "Maria", "12345678", new DateTime(2000, 10, 1), contatos1));
-            TabelaColaborador.Add(Colaborador.Criar(servicos2, endereco, genero, "",
+            TabelaColaborador.Add(Colaborador.Criar(endereco, genero, "",
                 contratoTrabalho, 2,"Taison", "1232323232", new DateTime(1999, 1, 1), contatos2));
         }
 

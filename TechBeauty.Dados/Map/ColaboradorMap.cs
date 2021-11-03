@@ -24,6 +24,11 @@ namespace TechBeauty.Dados.Map
                 (a => a.Agendamentos)
                 .WithOne(c => c.Colaborador)
                 .HasForeignKey(c => c.ColaboradorID);
+
+            builder.HasMany<ContratoTrabalho>
+                (c => c.ContratoTrabalho)
+                .WithOne(c => c.Colaborador)
+                .HasForeignKey(c => c.ColaboradorID);
         }
     }
 }

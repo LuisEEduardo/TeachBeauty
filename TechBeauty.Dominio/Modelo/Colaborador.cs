@@ -5,24 +5,23 @@ namespace TechBeauty.Dominio.Modelo
 {
     public class Colaborador : Pessoa 
     {
-        public List<Servico> Servicos { get; private set; }
         public Endereco Endereco { get; private set; }
         public Genero Genero { get; private set; }
         public string NomeSocial { get; private set; }
-        public ContratoTrabalho ContratoTrabalho { get; private set; }
+        public List<ContratoTrabalho> ContratoTrabalho { get; private set; }
         public int EnderecoID { get; set; }
         public int GeneroID { get; set; }
         public List<Escala> Escalas { get; set; }
         public int ContratoTrabalhoID { get; set; }
         public List<ServicoColaborador> ServicosColaborador { get; set; }
         public List<Agendamento> Agendamentos { get; set; }
+        
 
         public static Colaborador Criar(
-            List<Servico> servicos, 
             Endereco endereco, 
             Genero genero, 
             string nomeSocial, 
-            ContratoTrabalho contratoTrabalho,
+            List<ContratoTrabalho> contratoTrabalho,
             int id, 
             string nome, 
             string cpf,
@@ -31,11 +30,10 @@ namespace TechBeauty.Dominio.Modelo
         {
             Colaborador colaborador = new Colaborador();
             colaborador.Id = id;
-            colaborador.Servicos = servicos;
             colaborador.Endereco = endereco;
             colaborador.Genero = genero;
             colaborador.NomeSocial = nomeSocial;
-            colaborador.ContratoTrabalho = contratoTrabalho;
+            colaborador.ContratoTrabalho = contratoTrabalho; 
             colaborador.Nome = nome;
             colaborador.CPF = cpf;
             colaborador.DataNascimento = dataNascimento;
@@ -44,14 +42,14 @@ namespace TechBeauty.Dominio.Modelo
             return colaborador; 
         }
 
-        public void AddServico(Servico servico)
+        public void AddServico(ServicoColaborador servico)
         {
-            Servicos.Add(servico);
+            ServicosColaborador.Add(servico);
         }
 
-        public void RemoveServico(Servico servico)
+        public void RemoveServico(ServicoColaborador servico)
         {
-            Servicos.Remove(servico);
+            ServicosColaborador.Remove(servico);
         }
 
         public void AlterarNomeSocial(string nomeSocial)

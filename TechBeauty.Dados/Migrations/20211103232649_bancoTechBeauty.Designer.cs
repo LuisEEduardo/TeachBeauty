@@ -10,7 +10,7 @@ using TechBeauty.Dados;
 namespace TechBeauty.Dados.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20211103221436_bancoTechBeauty")]
+    [Migration("20211103232649_bancoTechBeauty")]
     partial class bancoTechBeauty
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -181,6 +181,8 @@ namespace TechBeauty.Dados.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ColaboradorID");
+
                     b.HasIndex("RegimeContratualID");
 
                     b.ToTable("ContratoTrabalho");
@@ -258,9 +260,6 @@ namespace TechBeauty.Dados.Migrations
                     b.Property<int>("CaixaID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CaixaId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DataFechamento")
                         .HasColumnType("DATE");
 
@@ -270,8 +269,6 @@ namespace TechBeauty.Dados.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CaixaID");
-
-                    b.HasIndex("CaixaId");
 
                     b.ToTable("FechamentoDiario");
                 });
@@ -504,9 +501,6 @@ namespace TechBeauty.Dados.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ColaboradorId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("VARCHAR(150)");
@@ -525,8 +519,6 @@ namespace TechBeauty.Dados.Migrations
                         .HasColumnType("DECIMAL(6,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ColaboradorId");
 
                     b.HasIndex("FechamentoDiarioId");
 
@@ -602,9 +594,6 @@ namespace TechBeauty.Dados.Migrations
                     b.Property<int>("ContratoTrabalhoID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ContratoTrabalhoId")
-                        .HasColumnType("int");
-
                     b.Property<int>("EnderecoID")
                         .HasColumnType("int");
 
@@ -613,8 +602,6 @@ namespace TechBeauty.Dados.Migrations
 
                     b.Property<string>("NomeSocial")
                         .HasColumnType("VARCHAR(100)");
-
-                    b.HasIndex("ContratoTrabalhoId");
 
                     b.HasIndex("EnderecoID");
 
@@ -702,11 +689,19 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.ContratoTrabalho", b =>
                 {
+                    b.HasOne("TechBeauty.Dominio.Modelo.Colaborador", "Colaborador")
+                        .WithMany("ContratoTrabalho")
+                        .HasForeignKey("ColaboradorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("TechBeauty.Dominio.Modelo.RegimeContratual", "RegimeContratual")
                         .WithMany("ContratosDeTrabalho")
                         .HasForeignKey("RegimeContratualID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Colaborador");
 
                     b.Navigation("RegimeContratual");
                 });
@@ -725,14 +720,10 @@ namespace TechBeauty.Dados.Migrations
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.FechamentoDiario", b =>
                 {
                     b.HasOne("TechBeauty.Dominio.Modelo.Caixa", "Caixa")
-                        .WithMany("FechamentoDiario")
+                        .WithMany("FechamentosDiario")
                         .HasForeignKey("CaixaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("TechBeauty.Dominio.Modelo.Caixa", null)
-                        .WithMany("Fechamentos")
-                        .HasForeignKey("CaixaId");
 
                     b.Navigation("Caixa");
                 });
@@ -837,10 +828,6 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Servico", b =>
                 {
-                    b.HasOne("TechBeauty.Dominio.Modelo.Colaborador", null)
-                        .WithMany("Servicos")
-                        .HasForeignKey("ColaboradorId");
-
                     b.HasOne("TechBeauty.Dominio.Modelo.FechamentoDiario", null)
                         .WithMany("ServicosRealizados")
                         .HasForeignKey("FechamentoDiarioId");
@@ -910,10 +897,6 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Colaborador", b =>
                 {
-                    b.HasOne("TechBeauty.Dominio.Modelo.ContratoTrabalho", "ContratoTrabalho")
-                        .WithMany()
-                        .HasForeignKey("ContratoTrabalhoId");
-
                     b.HasOne("TechBeauty.Dominio.Modelo.Endereco", "Endereco")
                         .WithMany("Colaboradores")
                         .HasForeignKey("EnderecoID")
@@ -932,8 +915,6 @@ namespace TechBeauty.Dados.Migrations
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
-                    b.Navigation("ContratoTrabalho");
-
                     b.Navigation("Endereco");
 
                     b.Navigation("Genero");
@@ -946,9 +927,7 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Caixa", b =>
                 {
-                    b.Navigation("FechamentoDiario");
-
-                    b.Navigation("Fechamentos");
+                    b.Navigation("FechamentosDiario");
 
                     b.Navigation("PagamentoColaborador");
                 });
@@ -1046,9 +1025,9 @@ namespace TechBeauty.Dados.Migrations
                 {
                     b.Navigation("Agendamentos");
 
-                    b.Navigation("Escalas");
+                    b.Navigation("ContratoTrabalho");
 
-                    b.Navigation("Servicos");
+                    b.Navigation("Escalas");
 
                     b.Navigation("ServicosColaborador");
                 });

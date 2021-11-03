@@ -18,7 +18,7 @@ namespace TechBeauty.Dados.Map
                 .IsRequired();
 
             builder.HasMany<FechamentoDiario>
-                (f => f.FechamentoDiario)
+                (f => f.FechamentosDiario)
                 .WithOne(c => c.Caixa)
                 .HasForeignKey(c => c.CaixaID);
 

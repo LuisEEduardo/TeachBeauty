@@ -6,7 +6,7 @@
         public int PagamentoColaboradorID { get; set; }
         protected override void CalcPagamento()
         {
-            Colaborador.ContratoTrabalho.AlterarSalario(Colaborador.ContratoTrabalho.Salario + ValorComissao); 
+            //Colaborador.ContratoTrabalho.AlterarSalario(Colaborador.ContratoTrabalho.Salario + ValorComissao); 
         }
     }
 }

@@ -4,18 +4,17 @@ namespace TechBeauty.Dominio.Modelo
 {
     public class Caixa
     {
-
-        public int Id { get; private set; }
-        public List<FechamentoDiario> Fechamentos { get; private set; } = new List<FechamentoDiario>();
-        public decimal ValorEmCaixa { get; private set; }
         //public List<string> DescricaoAdicaoDeValor { get; private set; }
         //public List<string> DescricaoRetiradaDeValor { get; private set; }
-        public List<FechamentoDiario> FechamentoDiario { get; set; }
+
+        public int Id{ get; private set; }
+        public List<FechamentoDiario> FechamentosDiario { get; private set; }
+        public decimal ValorEmCaixa { get; private set; }
         public List<PagamentoColaborador> PagamentoColaborador { get; set; }
 
         public void CalcValorTotalFechamento()
         {
-            foreach (FechamentoDiario fechamento in Fechamentos)
+            foreach (FechamentoDiario fechamento in FechamentosDiario)
             {
                 ValorEmCaixa += fechamento.ValorFechamento;
             }
@@ -35,7 +34,7 @@ namespace TechBeauty.Dominio.Modelo
 
         public FechamentoDiario buscaFechamento(FechamentoDiario fechamentoDiario)
         {
-            foreach (FechamentoDiario fechamento in Fechamentos)
+            foreach (FechamentoDiario fechamento in FechamentosDiario)
             {
                 if (fechamento == fechamentoDiario)
                 {
