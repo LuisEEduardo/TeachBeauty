@@ -10,7 +10,7 @@ using TechBeauty.Dados;
 namespace TechBeauty.Dados.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20211103233009_bancoTechBeauty")]
+    [Migration("20211103234204_bancoTechBeauty")]
     partial class bancoTechBeauty
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
