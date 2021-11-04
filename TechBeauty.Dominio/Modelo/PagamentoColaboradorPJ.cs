@@ -33,6 +33,7 @@ namespace TechBeauty.Dominio.Modelo
                 salarioDia += agendamento.Servico.Preco; 
             }
             Colaborador.AlterarSalario(salarioDia);
+            PagamentoColaborador.Caixa.RetirarValor(Colaborador.Salario);
         }
     }
 }

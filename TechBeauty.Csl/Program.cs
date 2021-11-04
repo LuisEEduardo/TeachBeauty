@@ -40,6 +40,8 @@ namespace TechBeauty.Csl
 
             Console.WriteLine(p.ValidaCPF("123456789"));
 
+            Console.WriteLine("---------------------------------------------------------");
+
         }
 
     }
