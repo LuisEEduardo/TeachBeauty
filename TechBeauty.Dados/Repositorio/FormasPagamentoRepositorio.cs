@@ -3,36 +3,33 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    public class TipoContatoRepositorio
+    class FormasPagamentoRepositorio
     {
+
         protected readonly Contexto contexto;
 
-        public TipoContatoRepositorio()
+        public FormasPagamentoRepositorio()
         {
             contexto = new Contexto();
         }
-
-        public void Incluir(TipoContato tipoContato)
+        public void Incluir(FormasPagamento formasPagamento)
         {
-            contexto.Add(tipoContato);
+            contexto.FormasPagamento.Add(formasPagamento);
             contexto.SaveChanges();
         }
-
-        public void Alterar(TipoContato tipoContato)
+        public void Alterar(FormasPagamento formasPagamento)
         {
-            contexto.TipoContato.Update(tipoContato);
+            contexto.FormasPagamento.Update(formasPagamento);
             contexto.SaveChanges();
         }
-
-        public TipoContato SelecionarPorId(int id)
+        public FormasPagamento SelecionarPorId(int id)
         {
-            return contexto.TipoContato.FirstOrDefault(x => x.Id == id);
+            return contexto.FormasPagamento.FirstOrDefault(x => x.Id == id);
         }
-
         public void Excluir(int id)
         {
             var entity = SelecionarPorId(id);
-            contexto.TipoContato.Remove(entity);
+            contexto.FormasPagamento.Remove(entity);
             contexto.SaveChanges();
         }
         public void Dispose()
