@@ -3,9 +3,8 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    class FechamentoDiarioRepositorio
+    public class FechamentoDiarioRepositorio
     {
-
         protected readonly Contexto contexto;
 
         public FechamentoDiarioRepositorio()

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Linq;
 using TechBeauty.Dominio.Modelo;
-using TechBeauty.Dominio.Modelo.Enumeradores;
-using System.Linq;
 
 namespace TechBeauty.Dados.Repositorio
 {
@@ -35,7 +32,7 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Excluir(int id)
         {
-            var entity = (SelecionarPorId(id);
+            var entity = SelecionarPorId(id);
             contexto.LogAgendamentos.Remove(entity);
             contexto.SaveChanges();
 

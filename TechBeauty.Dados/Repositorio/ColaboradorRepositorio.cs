@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    class ColaboradorRepositorio
+    public class ColaboradorRepositorio
     {
 
         protected readonly Contexto contexto; 

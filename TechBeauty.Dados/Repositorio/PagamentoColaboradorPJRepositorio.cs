@@ -3,7 +3,7 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    class PagamentoColaboradorPJRepositorio
+    public class PagamentoColaboradorPJRepositorio
     {
 
         protected readonly Contexto contexto;
