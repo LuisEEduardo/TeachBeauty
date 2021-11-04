@@ -12,14 +12,9 @@ namespace TechBeauty.Dominio.Modelo
         public DateTime? DataDesligamento { get; private set; }
         public int ColaboradorID { get; set; }
         public Colaborador Colaborador { get; set; }
-
-        // public List<Cargo> Cargos { get; private set; }
         public List<CargoContratoTrabalho> CargosContratosTrabalho { get; set; }
         public string CnpjCTPS { get; private set; }
 
-        // Propriedades dos Sistema Financeiro ---------------
-        public decimal Salario { get; private set; }
-        // ---------------------------------------------------
         
         public static ContratoTrabalho Criar(int Id,
             RegimeContratual regimeContratual,
@@ -45,11 +40,6 @@ namespace TechBeauty.Dominio.Modelo
         public void AlterarCnpjCTPS(string cnpjCTPS)
         {
             CnpjCTPS = cnpjCTPS; 
-        }
-
-        public void AlterarSalario(decimal salario)
-        {
-            Salario = salario;
         }
 
         public void AlterarRegimeContratual(RegimeContratual regimeContratual)

@@ -63,6 +63,15 @@ namespace TechBeauty.Dominio.Modelo
             Complemento = complemento;
         }
 
-    }
+        public void AlterarCEP(string cep)
+        {
+            CEP = cep;
+        }
 
+        public void AlterarBairro(string bairro)
+        {
+            Bairro = bairro;
+        }
+
+    }
 }

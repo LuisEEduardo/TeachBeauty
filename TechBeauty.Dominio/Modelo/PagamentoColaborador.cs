@@ -22,8 +22,8 @@ namespace TechBeauty.Dominio.Modelo
         protected abstract void CalcPagamento();
 
         protected void CalcValorComicao(int porcentagem)
-        {
-            //ValorComissao = Colaborador.ContratoTrabalho.Salario * (porcentagem / 100);
+        {            
+             ValorComissao = Colaborador.Salario * (porcentagem / 100);
         }
 
         protected void AlterarStatusPagamento(StatusPagamento statusAgendamento)

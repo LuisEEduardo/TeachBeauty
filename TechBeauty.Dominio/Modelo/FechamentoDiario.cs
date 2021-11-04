@@ -9,7 +9,6 @@ namespace TechBeauty.Dominio.Modelo
         public List<PagamentoCliente> Pagamentos { get; private set; } = new List<PagamentoCliente>();
         public DateTime DataFechamento { get; private set; }
         public decimal ValorFechamento { get; private set; }
-        public List<Servico> ServicosRealizados { get; set; }
         public List<PagamentoClienteFechamentoDiario> PagamentoClienteFechamentoDiario { get; set; }
         public int CaixaID { get; set; }
         public Caixa Caixa { get; set; }
@@ -22,17 +21,6 @@ namespace TechBeauty.Dominio.Modelo
                 foreach (Agendamento agendamento in pagamento.Agendamentos)
                 {
                     ValorFechamento += agendamento.OS.PrecoTotal;
-                }
-            }
-        }
-
-        public void PreencheServico()
-        {
-            foreach (PagamentoCliente pagamento in Pagamentos)
-            {
-                foreach (Agendamento agendamento in pagamento.Agendamentos)
-                {
-                    ServicosRealizados.Add(agendamento.Servico);
                 }
             }
         }

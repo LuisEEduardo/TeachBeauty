@@ -4,9 +4,6 @@ namespace TechBeauty.Dominio.Modelo
 {
     public class Caixa
     {
-        //public List<string> DescricaoAdicaoDeValor { get; private set; }
-        //public List<string> DescricaoRetiradaDeValor { get; private set; }
-
         public int Id{ get; private set; }
         public List<FechamentoDiario> FechamentosDiario { get; private set; }
         public decimal ValorEmCaixa { get; private set; }
@@ -20,16 +17,14 @@ namespace TechBeauty.Dominio.Modelo
             }
         }
 
-        public void RetirarValor(string motivo, decimal valor)
+        public void RetirarValor(decimal valor)
         {
             ValorEmCaixa -= valor;
-            //DescricaoRetiradaDeValor.Add($"Motivo: {motivo} | Valor: {valor}");
         }
 
-        public void AddValor(string motivo, decimal valor)
+        public void AddValor(decimal valor)
         {
             ValorEmCaixa += valor;
-            //DescricaoAdicaoDeValor.Add($"Motivo: {motivo} | Valor: {valor}"); 
         }
 
         public FechamentoDiario buscaFechamento(FechamentoDiario fechamentoDiario)
@@ -43,8 +38,6 @@ namespace TechBeauty.Dominio.Modelo
             }
             return null; 
         }
-
-
 
     }
 }

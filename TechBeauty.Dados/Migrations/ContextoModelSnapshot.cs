@@ -174,9 +174,6 @@ namespace TechBeauty.Dados.Migrations
                     b.Property<int>("RegimeContratualID")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Salario")
-                        .HasColumnType("decimal(18,2)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ColaboradorID");
@@ -506,9 +503,6 @@ namespace TechBeauty.Dados.Migrations
                     b.Property<int>("DuracaoEmMin")
                         .HasColumnType("INT");
 
-                    b.Property<int?>("FechamentoDiarioId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("VARCHAR(50)");
@@ -517,8 +511,6 @@ namespace TechBeauty.Dados.Migrations
                         .HasColumnType("DECIMAL(6,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FechamentoDiarioId");
 
                     b.ToTable("Servico");
                 });
@@ -600,6 +592,9 @@ namespace TechBeauty.Dados.Migrations
 
                     b.Property<string>("NomeSocial")
                         .HasColumnType("VARCHAR(100)");
+
+                    b.Property<decimal>("Salario")
+                        .HasColumnType("DECIMAL(6,2)");
 
                     b.HasIndex("EnderecoID");
 
@@ -824,13 +819,6 @@ namespace TechBeauty.Dados.Migrations
                     b.Navigation("FormaPagamento");
                 });
 
-            modelBuilder.Entity("TechBeauty.Dominio.Modelo.Servico", b =>
-                {
-                    b.HasOne("TechBeauty.Dominio.Modelo.FechamentoDiario", null)
-                        .WithMany("ServicosRealizados")
-                        .HasForeignKey("FechamentoDiarioId");
-                });
-
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.ServicoColaborador", b =>
                 {
                     b.HasOne("TechBeauty.Dominio.Modelo.Colaborador", "Colaborador")
@@ -950,8 +938,6 @@ namespace TechBeauty.Dados.Migrations
                     b.Navigation("PagamentoClienteFechamentoDiario");
 
                     b.Navigation("Pagamentos");
-
-                    b.Navigation("ServicosRealizados");
                 });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.FormasPagamento", b =>

@@ -38,7 +38,7 @@ namespace TechBeauty.Csl
 
             Pessoa p = new Pessoa();
 
-            Console.WriteLine(p.ValidaCPF("12345678900"));
+            Console.WriteLine(p.ValidaCPF("123456789"));
 
         }
 

@@ -15,7 +15,11 @@ namespace TechBeauty.Dominio.Modelo
         public int ContratoTrabalhoID { get; set; }
         public List<ServicoColaborador> ServicosColaborador { get; set; }
         public List<Agendamento> Agendamentos { get; set; }
-        
+
+        // Propriedades dos Sistema Financeiro ---------------
+        public decimal Salario { get; private set; }
+        // ---------------------------------------------------
+
 
         public static Colaborador Criar(
             Endereco endereco, 
@@ -56,7 +60,10 @@ namespace TechBeauty.Dominio.Modelo
         {
             NomeSocial = nomeSocial; 
         }
-
+        public void AlterarSalario(decimal salario)
+        {
+            Salario = salario;
+        }
 
     }
 }
