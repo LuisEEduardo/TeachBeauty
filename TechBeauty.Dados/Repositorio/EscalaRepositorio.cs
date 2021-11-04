@@ -1,47 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
     public class EscalaRepositorio
     {
-        public List<Escala> TabelaEscala { get; private set; } = new List<Escala>();
+        protected readonly Contexto contexto;
 
-        public EscalaRepositorio(Colaborador colaborador)
+        public EscalaRepositorio()
         {
-            PreencherDados(colaborador);
+            contexto = new Contexto();
         }
 
         public void Incluir(Escala escala)
         {
-            TabelaEscala.Add(escala);
+            contexto.Escala.Add(escala);
+            contexto.SaveChanges();
         }
 
-        public void Alterar(int id, DateTime dataHoraEntrada, DateTime dataHoraSaida)
+        public void Alterar(Escala escala)
         {
-            // TabelaEscala.FirstOrDefault(x => x.Id == id).Alterar(dataHoraEntrada, dataHoraSaida); 
-            TabelaEscala.FirstOrDefault(x => x.Id == id).AlterarDataHoraEntrada(dataHoraEntrada);
+            contexto.Escala.Update(escala);
+            contexto.SaveChanges();
+
         }
 
         public Escala SelecionarPorId(int id)
         {
-            return TabelaEscala.FirstOrDefault(x => x.Id == id);
+            return contexto.Escala.FirstOrDefault(x => x.Id == id);
         }
 
         public void Excluir(int id)
         {
-            TabelaEscala.Remove(SelecionarPorId(id));
+            var entity = SelecionarPorId(id);
+            contexto.Escala.Remove(entity);
+            contexto.SaveChanges();
         }
 
-        private void PreencherDados(Colaborador colaborador)
+        public void Dispose()
         {
-            TabelaEscala.Add(Escala.Criar(1, new DateTime(2021, 10, 22, 8, 2, 10), new DateTime(2021, 10, 22, 20, 2, 12), colaborador));
-            TabelaEscala.Add(Escala.Criar(2, new DateTime(2021, 10, 22, 8, 2, 10), new DateTime(2021, 10, 22, 20, 2, 12), colaborador));
-            TabelaEscala.Add(Escala.Criar(3, new DateTime(2021, 10, 22, 8, 2, 10), new DateTime(2021, 10, 22, 20, 2, 12), colaborador));
+            contexto.Dispose();
         }
-
 
     }
 }

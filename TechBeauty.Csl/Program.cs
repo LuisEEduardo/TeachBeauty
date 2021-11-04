@@ -21,8 +21,8 @@ namespace TechBeauty.Csl
             EnderecoRepositorio repoEndereco = new EnderecoRepositorio();
             RegimeContratualRepositorio regimeContratualRepositorio = new RegimeContratualRepositorio();
 
-            var regimeContratual = regimeContratualRepositorio.TabelaRegimeContratual[0];
-            var cargos = repoCargo.TabelaCargo;
+            //var regimeContratual = regimeContratualRepositorio.TabelaRegimeContratual[0];
+            //var cargos = repoCargo.TabelaCargo;
 
             //ContratoTrabalhoRepositorio repoContratoTrabalhoRepositorio = new ContratoTrabalhoRepositorio(regimeContratual, cargos);
 
@@ -41,6 +41,11 @@ namespace TechBeauty.Csl
             Console.WriteLine(p.ValidaCPF("123456789"));
 
             Console.WriteLine("---------------------------------------------------------");
+
+            //var cargoDB = new CargoRepositorio();
+            //Cargo cargo = new Cargo();
+            //cargoDB.Incluir(cargo);
+
 
         }
 

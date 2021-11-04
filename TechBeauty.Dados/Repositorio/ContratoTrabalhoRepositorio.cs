@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
@@ -8,54 +6,40 @@ namespace TechBeauty.Dados.Repositorio
     public class ContratoTrabalhoRepositorio
     {
 
-        public List<ContratoTrabalho> TabelaContratoTrabalho { get; private set; } = new List<ContratoTrabalho>();
+        protected readonly Contexto contexto;
 
-        public ContratoTrabalhoRepositorio(RegimeContratual regimeContratual, List<CargoContratoTrabalho> cargos)
+        public ContratoTrabalhoRepositorio() 
         {
-            PreencherDados(regimeContratual, cargos);
+            contexto = new Contexto(); 
         }
 
         public void Incluir(ContratoTrabalho contratoTrabalho)
         {
-            TabelaContratoTrabalho.Add(contratoTrabalho);
+            contexto.ContratoTrabalho.Add(contratoTrabalho);
+            contexto.SaveChanges();
         }
 
-        public void Alterar(int id,
-            RegimeContratual regimeContratual,
-            DateTime dataEntrada,
-            DateTime? dataDesligamento,
-            List<Cargo> cargos,
-            string cnpjCTPS)
+        public void Alterar(ContratoTrabalho contratoTrabalho)
         {
-            // TabelaContratoTrabalho.FirstOrDefault(x => x.Id == id).Alterar(regimeContratual, dataEntrada, dataDesligamento, cargos, cnpjCTPS);
-            TabelaContratoTrabalho.FirstOrDefault(x => x.Id == id).AlterarCnpjCTPS(cnpjCTPS);
+            contexto.ContratoTrabalho.Update(contratoTrabalho);
+            contexto.SaveChanges(); 
         }
 
         public ContratoTrabalho SelecionarPorId(int id)
         {
-            return TabelaContratoTrabalho.FirstOrDefault(x => x.Id == id);
+            return contexto.ContratoTrabalho.FirstOrDefault(x => x.Id == id);
         }
 
         public void Excluir(int id)
         {
-            TabelaContratoTrabalho.Remove(SelecionarPorId(id));
+            var entity = SelecionarPorId(id);
+            contexto.ContratoTrabalho.Remove(entity);
+            contexto.SaveChanges();
         }
 
-        private void PreencherDados(RegimeContratual regimeContratual, List<CargoContratoTrabalho> cargos)
+        public void Dispose()
         {
-            /*
-            var cabelereira = cargos.Where(x => x.Id == 1).FirstOrDefault();
-            var manicure = cargos.Where(x => x.Id == 2).FirstOrDefault();
-            var depiladora = cargos.Where(x => x.Id == 3).FirstOrDefault();
-            var colorista = cargos.Where(x => x.Id == 4).FirstOrDefault();
-           
-            List<CargoContratoTrabalho> cargo1 = new List<Cargo>() { cabelereira, depiladora };
-            List<CargoContratoTrabalho> cargo2 = new List<CargoContratoTrabalho>() { manicure, colorista };
-             */
-
-            TabelaContratoTrabalho.Add(ContratoTrabalho.Criar(1, regimeContratual, DateTime.Now, cargos, "1234"));
-            TabelaContratoTrabalho.Add(ContratoTrabalho.Criar(2, regimeContratual, DateTime.Now, cargos, "12389"));
-
+            contexto.Dispose();
         }
 
 

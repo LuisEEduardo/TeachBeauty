@@ -7,39 +7,40 @@ namespace TechBeauty.Dados.Repositorio
     public class EnderecoRepositorio
     {
 
-        public List<Endereco> TabelaEndereco { get; private set; } = new List<Endereco>();
+        protected readonly Contexto contexto; 
 
         public EnderecoRepositorio()
         {
-            PreencherDados();
+            contexto = new Contexto();
         }
 
         public void Incluir(Endereco endereco)
         {
-            TabelaEndereco.Add(endereco); 
+            contexto.Endereco.Add(endereco);
+            contexto.SaveChanges(); 
         }
 
-        public void Alterar(int id, string logradouro, string cidade, string uf, string numero, string complemento)
+        public void Alterar(Endereco endereco)
         {
-            TabelaEndereco.FirstOrDefault(x => x.Id == id).Alterar(logradouro, cidade, uf, numero, complemento);
+            contexto.Endereco.Update(endereco);
+            contexto.SaveChanges();
         }
 
         public Endereco SelecionarPorId(int id)
         {
-              return TabelaEndereco.FirstOrDefault(x => x.Id == id); 
+              return contexto.Endereco.FirstOrDefault(x => x.Id == id); 
         }
 
         public void Excluir(int id)
         {
-            TabelaEndereco.Remove(SelecionarPorId(id)); 
+            var entity = SelecionarPorId(id);
+            contexto.Endereco.Remove(entity);
+            contexto.SaveChanges();
         }
 
-        private void PreencherDados()
+        public void Dispose()
         {
-            TabelaEndereco.Add(Endereco.Criar(1, "n sei", "Bsb", "DF", "12", "A", "avenida do lago"));
-            TabelaEndereco.Add(Endereco.Criar(2, "n sei", "Bsb", "DF", "13", "B", "avenida do lago"));
-            TabelaEndereco.Add(Endereco.Criar(3, "n sei", "Bsb", "DF", "14", "C", "avenida do lago"));
-            TabelaEndereco.Add(Endereco.Criar(4, "n sei", "Bsb", "DF", "15", "D", "avenida do lago"));
+            contexto.Dispose();
         }
 
     }

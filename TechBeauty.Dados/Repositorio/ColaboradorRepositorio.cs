@@ -8,62 +8,39 @@ namespace TechBeauty.Dados.Repositorio
     class ColaboradorRepositorio
     {
 
-        public List<Colaborador> TabelaColaborador { get; private set; } = new List<Colaborador>();
+        protected readonly Contexto contexto; 
 
-        public ColaboradorRepositorio(List<Contato> contatos,
-            List<Servico> servicos,
-            Endereco endereco,
-            Genero genero,
-            List<ContratoTrabalho> contratoTrabalho)
+        public ColaboradorRepositorio()
         {
-            PreencherDados(contatos, servicos, endereco, genero, contratoTrabalho);
+            contexto = new Contexto();
         }
 
         public void Incluir(Colaborador colaborador)
         {
-            TabelaColaborador.Add(colaborador);
+            contexto.Colaborador.Add(colaborador);
+            contexto.SaveChanges();
         }
 
-        public void Alterar(int id, List<Servico> servicos, Endereco endereco, Genero genero, string nomeSocial, ContratoTrabalho contrato)
+        public void Alterar(Colaborador colaborador)
         {
-            //TabelaColaborador.FirstOrDefault(x => x.Id == id).Alterar(servicos, endereco, genero, nomeSocial, contrato);
-            TabelaColaborador.FirstOrDefault(x => x.Id == id).AlterarNomeSocial(nomeSocial);
+            contexto.Colaborador.Update(colaborador);
         }
 
         public Colaborador SelecionarPorId(int id)
         {
-            return TabelaColaborador.FirstOrDefault(x => x.Id == id);
+            return contexto.Colaborador.FirstOrDefault(x => x.Id == id);
         }
 
         public void Excluir(int id)
         {
-            TabelaColaborador.Remove(SelecionarPorId(id));
+            var entity = SelecionarPorId(id);
+            contexto.Colaborador.Remove(entity);
+            contexto.SaveChanges();
         }
 
-        private void PreencherDados(List<Contato> contatos,
-            List<Servico> servicos,
-            Endereco endereco,
-            Genero genero,
-            List<ContratoTrabalho> contratoTrabalho)
+        public void Dispose()
         {
-            Contato c1 = contatos.Where(x => x.Id == 1).FirstOrDefault();
-            Contato c2 = contatos.Where(x => x.Id == 2).FirstOrDefault();
-            Contato c3 = contatos.Where(x => x.Id == 3).FirstOrDefault();
-
-            List<Contato> contatos1 = new List<Contato>() { c1, c2 };
-            List<Contato> contatos2 = new List<Contato>() { c3, c2 };
-
-            Servico s1 = servicos.Where(x => x.Id == 1).FirstOrDefault();
-            Servico s2 = servicos.Where(x => x.Id == 2).FirstOrDefault();
-            Servico s3 = servicos.Where(x => x.Id == 3).FirstOrDefault();
-
-            List<Servico> servicos1 = new List<Servico>() { s2, s1 };
-            List<Servico> servicos2 = new List<Servico>() { s3 };
-
-            TabelaColaborador.Add(Colaborador.Criar(endereco, genero,
-                "", contratoTrabalho, 1, "Maria", "12345678", new DateTime(2000, 10, 1), contatos1));
-            TabelaColaborador.Add(Colaborador.Criar(endereco, genero, "",
-                contratoTrabalho, 2,"Taison", "1232323232", new DateTime(1999, 1, 1), contatos2));
+            contexto.Dispose();
         }
 
     }

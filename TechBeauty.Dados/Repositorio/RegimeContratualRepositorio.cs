@@ -7,37 +7,39 @@ namespace TechBeauty.Dados.Repositorio
     public class RegimeContratualRepositorio
     {
 
-        public List<RegimeContratual> TabelaRegimeContratual { get; private set; } = new List<RegimeContratual>();
+        protected readonly Contexto contexto;
 
         public RegimeContratualRepositorio()
         {
-            PreencherDados();
+            contexto = new Contexto();
         }
 
         public void Incluir(RegimeContratual regimeContratual)
         {
-            TabelaRegimeContratual.Add(regimeContratual); 
+            contexto.RegimeContratual.Add(regimeContratual);
+            contexto.SaveChanges();
         }
 
-        public void Alterar(int id, string valor)
+        public void Alterar(RegimeContratual regimeContratual)
         {
-            TabelaRegimeContratual.FirstOrDefault(x => x.Id == id).AlterarValor(valor); 
+            contexto.RegimeContratual.Update(regimeContratual);
+            contexto.SaveChanges();
         }
 
         public RegimeContratual SelecionarCargoPorId(int id)
         {
-            return TabelaRegimeContratual.FirstOrDefault(x => x.Id == id);
+            return contexto.RegimeContratual.FirstOrDefault(x => x.Id == id);
         }
 
         public void Excluir(int id)
         {
-            TabelaRegimeContratual.Remove(SelecionarCargoPorId(id));
+            var entity = SelecionarCargoPorId(id);
+            contexto.RegimeContratual.Remove(entity);
+            contexto.SaveChanges();
         }
-
-        private void PreencherDados()
+        public void Dispose()
         {
-            TabelaRegimeContratual.Add(RegimeContratual.Criar(1, "CLT")); 
-            TabelaRegimeContratual.Add(RegimeContratual.Criar(2, "PJ")); 
+            contexto.Dispose();
         }
 
     }

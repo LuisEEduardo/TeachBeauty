@@ -8,42 +8,41 @@ namespace TechBeauty.Dados.Repositorio
     public class OrdemServicoRepositorio
     {
 
-        public List<OrdemServico> TabelaOrdemServico { get; private set; } = new List<OrdemServico>();
+        public readonly Contexto contexto;
 
-        public OrdemServicoRepositorio(Cliente cliente)
+        public OrdemServicoRepositorio()
         {
-            PreencherDados(cliente);
+            contexto = new Contexto();
         }
 
         public void Incluir(OrdemServico ordemServico)
         {
-            TabelaOrdemServico.Add(ordemServico);
+            contexto.OrdemServico.Add(ordemServico);
+            contexto.SaveChanges();
         }
 
-        public void Alterar(int id, decimal precoTotal, int duracaoTotal, Cliente cliente, StatusOS status)
+        public void Alterar(OrdemServico ordemServico)
         {
-            //TabelaOrdemServico.FirstOrDefault(x => x.Id == id).Alterar(precoTotal, duracaoTotal, cliente, status);
-            TabelaOrdemServico.FirstOrDefault(x => x.Id == id).AlterarCliente(cliente);
+
+            contexto.OrdemServico.Update(ordemServico);
+            contexto.SaveChanges();
         }
-        
+
         public OrdemServico SelecionarPorId(int id)
         {
-            return TabelaOrdemServico.FirstOrDefault(x => x.Id == id);
+            return contexto.OrdemServico.FirstOrDefault(x => x.Id == id);
         }
 
         public void Excluir(int id)
         {
-            TabelaOrdemServico.Remove(SelecionarPorId(id));
+            var entity = SelecionarPorId(id);
+            contexto.OrdemServico.Remove(entity);
+            contexto.SaveChanges();
         }
-
-        private void PreencherDados(Cliente cliente)
+        public void Dispose()
         {
-            TabelaOrdemServico.Add(OrdemServico.Criar(1, 100.00m, 30, cliente, StatusOS.Pendente));
-            TabelaOrdemServico.Add(OrdemServico.Criar(2, 140.00m, 30, cliente, StatusOS.Concluido));
-            TabelaOrdemServico.Add(OrdemServico.Criar(3, 30.00m, 30, cliente, StatusOS.ParcialmenteConcluido));
-            TabelaOrdemServico.Add(OrdemServico.Criar(4, 50.50m, 30, cliente, StatusOS.Cancelado));
+            contexto.Dispose();
         }
-
-
+        
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
@@ -7,44 +6,43 @@ namespace TechBeauty.Dados.Repositorio
     public class CargoRepositorio
     {
 
-        public List<Cargo> TabelaCargo { get; private set; } = new List<Cargo>();
+        protected readonly Contexto contexto;  
 
         public CargoRepositorio()
         {
-            PreencherDados(); 
+            contexto = new Contexto();
         }
 
         public void Incluir(Cargo cargo)
         {
-            TabelaCargo.Add(cargo);
+            contexto.Cargo.Add(cargo);
+            contexto.SaveChanges();   // Inclui no Bd
         }
 
-        public void Alterar(int id, string descricao)
+        public void Alterar(Cargo cargo)
         {
-            TabelaCargo.FirstOrDefault(x => x.Id == id).MudarDescricao(descricao);
+            contexto.Cargo.Update(cargo);
+            contexto.SaveChanges();
         }
 
         public Cargo SelecionarPorId(int id)
         {
-            return TabelaCargo.FirstOrDefault(x => x.Id == id);
+            return contexto.Cargo.FirstOrDefault(x => x.Id == id);
         }
         
         public void Excluir(int id)
         {
-            TabelaCargo.Remove(SelecionarPorId(id));
+            var entity = SelecionarPorId(id); 
+            contexto.Cargo.Remove(entity);
+            contexto.SaveChanges();
         }
 
-        private void PreencherDados()
+        public void Dispose()   
         {
-            TabelaCargo.Add(Cargo.Criar(1, "Cabelereira",
-                "Efetua cortes de cabelo feminino e masculino"));
-
-            TabelaCargo.Add(Cargo.Criar(2, "Manicure")); 
-
-            TabelaCargo.Add(Cargo.Criar(3, "Depiladora")); 
-            
-            TabelaCargo.Add(Cargo.Criar(4, "Colorista")); 
+            contexto.Dispose();
         }
+        // Dá controle a funcionalidades ao c#
+        // uso interessante para funcionalidades externas para fechar conecção com o bd, por exemplo.        
 
     }
 }

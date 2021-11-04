@@ -9,40 +9,41 @@ namespace TechBeauty.Dados.Repositorio
     public class LogAgendamentoRepositorio
     {
 
-        public List<LogAgendamento> TabelaLogAgendamento { get; private set; } = new List<LogAgendamento>();
+        protected readonly Contexto contexto;
 
-        public LogAgendamentoRepositorio(StatusAgendamento status)
+        public LogAgendamentoRepositorio()
         {
-            PreencherDados(status);
+            contexto = new Contexto();
         }
 
         public void Incluir(LogAgendamento logAgendamento)
         {
-            TabelaLogAgendamento.Add(logAgendamento);
+            contexto.LogAgendamentos.Add(logAgendamento);
+            contexto.SaveChanges();
         }
 
-        public void Alterar(int idAgendamento, StatusAgendamento status)
+        public void Alterar(LogAgendamento logAgendamento)
         {
-            TabelaLogAgendamento.FirstOrDefault(x => x.AgendamentoID == idAgendamento).AlterarStatus(status);
+            contexto.LogAgendamentos.Update(logAgendamento);
+            contexto.SaveChanges();
         }
 
-        public LogAgendamento SelecionarPorId(int idAgendamento)
+        public LogAgendamento SelecionarPorId(int id)
         {
-            return TabelaLogAgendamento.FirstOrDefault(x => x.AgendamentoID == idAgendamento);
+            return contexto.LogAgendamentos.FirstOrDefault(x => x.Id == id);
         }
 
-        public void Excluir(int idAgendamento)
+        public void Excluir(int id)
         {
-            TabelaLogAgendamento.Remove(SelecionarPorId(idAgendamento));
-        }
+            var entity = (SelecionarPorId(id);
+            contexto.LogAgendamentos.Remove(entity);
+            contexto.SaveChanges();
 
-        private void PreencherDados(StatusAgendamento status)
+        }
+        public void Dispose()
         {
-            TabelaLogAgendamento.Add(LogAgendamento.Criar(new DateTime(2021, 10, 22), status)); 
-            TabelaLogAgendamento.Add(LogAgendamento.Criar(new DateTime(2021, 10, 20), status)); 
-            TabelaLogAgendamento.Add(LogAgendamento.Criar(new DateTime(2021, 10, 10), status)); 
+            contexto.Dispose();
         }
-
 
     }
 }
