@@ -9,11 +9,11 @@ namespace TechBeauty.Csl
     {
         static void Main(string[] args)
         {
+            
+            var cargoDB = new CargoRepositorio();            
+            cargoDB.Incluir(Cargo.Criar("Cabelereira", "Efetua cortes de cabelo feminino e masculino"));
 
-            var cargoDB = new CargoRepositorio();
-            Cargo cargo = new Cargo();
-            cargoDB.Incluir(cargo);
-
+            Console.WriteLine("Hello World");
 
         }
 
