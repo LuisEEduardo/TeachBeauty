@@ -9,10 +9,9 @@ namespace TechBeauty.Dominio.Modelo
         public string Valor { get; private set; }
         public List<Contato> Contatos { get; set; }
 
-        public static TipoContato Criar(int id, string valor)
+        public static TipoContato Criar(string valor)
         {
             TipoContato tipoContato = new TipoContato();
-            tipoContato.Id = id;
             tipoContato.Valor = valor;
             return tipoContato; 
         }
