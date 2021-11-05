@@ -1,8 +1,9 @@
 ﻿using System;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Escala
+    public class Escala : IEntity
     {
         public int Id { get; private set; }
         public DateTime DataHoraEntrada { get; private set; }

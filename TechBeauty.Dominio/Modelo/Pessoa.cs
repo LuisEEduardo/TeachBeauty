@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Pessoa
+    public class Pessoa : IEntity
     {
         public int Id { get; protected set; }
         public string Nome { get; protected set; }

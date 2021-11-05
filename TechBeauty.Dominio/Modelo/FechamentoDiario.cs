@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class FechamentoDiario
+    public class FechamentoDiario : IEntity
     {
         public int Id { get; private set; }
         public List<PagamentoCliente> Pagamentos { get; private set; } = new List<PagamentoCliente>();

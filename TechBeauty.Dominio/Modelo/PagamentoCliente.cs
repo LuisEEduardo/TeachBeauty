@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using TechBeauty.Dominio.Modelo.Enumeradores;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class PagamentoCliente
+    public class PagamentoCliente : IEntity
     {
         public int Id { get; private set; }
         public DateTime DiaPagamento { get; private set; }

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Cliente : Pessoa
+    public class Cliente : Pessoa, IEntity
     {
 
         public List<OrdemServico> OrdensServico { get; set; }

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Contato
+    public class Contato : IEntity
     {
 
         public int Id { get; private set; }

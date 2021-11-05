@@ -1,6 +1,8 @@
-﻿namespace TechBeauty.Dominio.Modelo
+﻿using TechBeauty.Dominio.Repositorio;
+
+namespace TechBeauty.Dominio.Modelo
 {
-    public class PagamentoColaboradorCLT : PagamentoColaborador
+    public class PagamentoColaboradorCLT : PagamentoColaborador, IEntity
     {
         public PagamentoColaborador PagamentoColaborador { get; set; }
         public int PagamentoColaboradorID { get; set; }

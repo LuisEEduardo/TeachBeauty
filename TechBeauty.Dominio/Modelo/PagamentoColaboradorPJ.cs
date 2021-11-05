@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class PagamentoColaboradorPJ : PagamentoColaborador
+    public class PagamentoColaboradorPJ : PagamentoColaborador, IEntity
     {
         public List<Agendamento> AgendamentosDia { get; private set; } = new List<Agendamento>();
         public PagamentoColaborador PagamentoColaborador { get; set; }

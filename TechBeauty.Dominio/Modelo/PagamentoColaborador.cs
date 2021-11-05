@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using TechBeauty.Dominio.Modelo.Enumeradores;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public abstract class PagamentoColaborador
+    public abstract class PagamentoColaborador : IEntity
     {
         public int Id { get; private set; }
         public Colaborador Colaborador { get; private set; }

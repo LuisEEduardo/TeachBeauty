@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Caixa
+    public class Caixa : IEntity
     {
         public int Id{ get; private set; }
         public List<FechamentoDiario> FechamentosDiario { get; private set; }

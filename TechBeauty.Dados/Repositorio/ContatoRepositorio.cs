@@ -1,45 +1,9 @@
-﻿using System.Linq;
-using TechBeauty.Dominio.Modelo;
+﻿using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    public class ContatoRepositorio
+    public class ContatoRepositorio : RepositorioBase<Contato>
     {
-        protected readonly Contexto contexto;    
-    
-        public ContatoRepositorio()
-        {
-            contexto = new Contexto();
-        }
-
-        public void Incluir(Contato contato)
-        {
-            contexto.Contato.Add(contato);
-            contexto.SaveChanges();
-        }
-
-        public void Alterar(Contato contato)
-        {
-            contexto.Contato.Update(contato);
-            contexto.SaveChanges();
-        }
-
-        public Contato SelecionarPorId(int id)
-        {
-            return contexto.Contato.FirstOrDefault(x => x.Id == id); 
-        }
-
-        public void Excluir(int id)
-        {
-            var entity = SelecionarPorId(id);
-            contexto.Contato.Remove(entity);
-            contexto.SaveChanges();
-        }
-        
-        public void Dispose()
-        {
-            contexto.Dispose(); 
-        }
 
     }
 }
