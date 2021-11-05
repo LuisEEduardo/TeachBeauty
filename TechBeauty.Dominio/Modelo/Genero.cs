@@ -9,10 +9,9 @@ namespace TechBeauty.Dominio.Modelo
         public string Valor { get; private set; }
         public List<Colaborador> Colaboradores { get; set; }
 
-        public static Genero Criar(int id, string valor)
+        public static Genero Criar(string valor)
         {
             Genero genero = new Genero();
-            genero.Id = id;
             genero.Valor = valor;
             return genero;
         }

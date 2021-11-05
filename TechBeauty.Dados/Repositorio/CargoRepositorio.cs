@@ -19,7 +19,7 @@ namespace TechBeauty.Dados.Repositorio
             }
         }
 
-
+        
 
     }
 }

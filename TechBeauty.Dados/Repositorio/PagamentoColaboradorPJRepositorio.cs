@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using TechBeauty.Dominio.Modelo;
+﻿using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {

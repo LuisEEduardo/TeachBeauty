@@ -64,3 +64,4 @@ C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Csl\bin\Debug\net5.0\runt
 C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Csl\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Csl\bin\Debug\net5.0\TechBeauty.Dados.dll
 C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Csl\bin\Debug\net5.0\TechBeauty.Dados.pdb
+C:\Users\Luis Lemos\source\repos\TechBeauty\TechBeauty.Csl\obj\Debug\net5.0\TechBeauty.Csl.csproj.CopyComplete

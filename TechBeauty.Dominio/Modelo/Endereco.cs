@@ -15,11 +15,10 @@ namespace TechBeauty.Dominio.Modelo
         public string Bairro { get; private set; }
         public List<Colaborador> Colaboradores { get; set; }
 
-        public static Endereco Criar(int id, string logradouro, string cidade,
+        public static Endereco Criar(string logradouro, string cidade,
             string uf, string numero, string cep, string bairro, string complemento = "")
         {
             Endereco endereco = new Endereco();
-            endereco.Id = id;
             endereco.Logradouro = logradouro;
             endereco.Cidade = cidade;
             endereco.UF = uf;
