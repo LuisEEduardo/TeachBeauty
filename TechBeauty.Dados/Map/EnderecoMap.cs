@@ -44,6 +44,8 @@ namespace TechBeauty.Dados.Map
                 .WithOne(e => e.Endereco)
                 .HasForeignKey(e => e.EnderecoID);
 
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

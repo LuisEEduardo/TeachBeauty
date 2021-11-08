@@ -27,7 +27,7 @@ namespace TechBeauty.Dados.Repositorio
             contexto.SaveChanges();
         }
 
-        public T Selecionar(int id)
+        public virtual T Selecionar(int id)
         {
             return contexto.Set<T>().FirstOrDefault(x => x.Id == id);
         }

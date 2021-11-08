@@ -28,6 +28,8 @@ namespace TechBeauty.Dados.Map
                 .WithOne(os => os.OS)
                 .HasForeignKey(os => os.OrdemServicoID);
 
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

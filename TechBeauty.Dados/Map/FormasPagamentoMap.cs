@@ -30,6 +30,10 @@ namespace TechBeauty.Dados.Map
                 (pcfp => pcfp.pagamentoClienteFormasPagamentos)
                 .WithOne(f => f.FormasPagamento)
                 .HasForeignKey(f => f.FormasPagamentoID);
+
+
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

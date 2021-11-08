@@ -24,6 +24,9 @@ namespace TechBeauty.Dados.Map
                 (r => r.ContratosDeTrabalho)
                 .WithOne(c => c.RegimeContratual)
                 .HasForeignKey(c => c.RegimeContratualID);
+
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

@@ -21,6 +21,9 @@ namespace TechBeauty.Dados.Map
                 .WithOne(tp => tp.Tipo)
                 .HasForeignKey(f => f.TipoContatoID);
 
+
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

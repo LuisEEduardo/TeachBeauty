@@ -25,6 +25,8 @@ namespace TechBeauty.Dados.Map
                 .WithOne(c => c.Cargo)
                 .HasForeignKey(c => c.CargoID);
 
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

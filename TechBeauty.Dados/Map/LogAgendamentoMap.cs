@@ -20,6 +20,9 @@ namespace TechBeauty.Dados.Map
             builder.Property(x => x.Status)
                 .HasColumnType("INT")
                 .IsRequired();
+
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

@@ -16,6 +16,8 @@ namespace TechBeauty.Dados.Map
                 .HasColumnType("VARCHAR(256)")
                 .IsRequired();
 
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

@@ -34,6 +34,9 @@ namespace TechBeauty.Dados.Map
                 (clt => clt.PagamentoColaboradorCLT)
                 .WithOne(pc => pc.PagamentoColaborador)
                 .HasForeignKey(pc => pc.PagamentoColaboradorID);
+
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

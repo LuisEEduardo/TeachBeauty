@@ -29,6 +29,8 @@ namespace TechBeauty.Dados.Map
                 .WithOne(a => a.Agendamento)
                 .HasForeignKey(a => a.AgendamentoID);
 
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

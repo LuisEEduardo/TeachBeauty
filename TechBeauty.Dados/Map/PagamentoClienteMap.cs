@@ -39,6 +39,8 @@ namespace TechBeauty.Dados.Map
                 .WithOne(pc => pc.PagamentoCliente)
                 .HasForeignKey(pc => pc.PagamentoClienteID);
 
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

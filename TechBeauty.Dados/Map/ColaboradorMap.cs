@@ -33,6 +33,8 @@ namespace TechBeauty.Dados.Map
                 (c => c.ContratoTrabalho)
                 .WithOne(c => c.Colaborador)
                 .HasForeignKey(c => c.ColaboradorID);
+
+            
         }
     }
 }

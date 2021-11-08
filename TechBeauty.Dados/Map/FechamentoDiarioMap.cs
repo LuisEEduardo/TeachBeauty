@@ -24,8 +24,10 @@ namespace TechBeauty.Dados.Map
             builder.HasMany<PagamentoClienteFechamentoDiario>
                 (p => p.PagamentoClienteFechamentoDiario)
                 .WithOne(f => f.FechamentoDiario)
-                .HasForeignKey(f => f.FechamentoDiarioID); 
+                .HasForeignKey(f => f.FechamentoDiarioID);
 
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

@@ -26,7 +26,9 @@ namespace TechBeauty.Dados.Map
                 (pc => pc.PagamentoColaborador)
                 .WithOne(c => c.Caixa)
                 .HasForeignKey(c => c.CaixaID);
-
+            
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

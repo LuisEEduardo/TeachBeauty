@@ -26,7 +26,10 @@ namespace TechBeauty.Dados.Map
 
             builder.Property(x => x.CnpjCTPS)
                  .HasColumnType("VARCHAR(14)")
-                 .IsRequired(); 
+                 .IsRequired();
+
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

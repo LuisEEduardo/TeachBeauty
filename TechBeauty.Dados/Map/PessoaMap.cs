@@ -33,6 +33,9 @@ namespace TechBeauty.Dados.Map
                 (c => c.Contatos)
                 .WithOne(p => p.Pessoa)
                 .HasForeignKey(p => p.PessoaID);
+
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }

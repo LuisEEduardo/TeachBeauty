@@ -13,7 +13,8 @@ namespace TechBeauty.Dados.Map
             builder.HasMany<OrdemServico>
                 (os => os.OrdensServico)
                 .WithOne(c => c.Cliente)
-                .HasForeignKey(c => c.ClienteID); 
+                .HasForeignKey(c => c.ClienteID);
+
         }
     }
 }

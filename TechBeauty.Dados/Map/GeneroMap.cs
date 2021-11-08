@@ -20,8 +20,10 @@ namespace TechBeauty.Dados.Map
             builder.HasMany<Colaborador>
                 (c => c.Colaboradores)
                 .WithOne(g => g.Genero)
-                .HasForeignKey(g => g.GeneroID);                 
+                .HasForeignKey(g => g.GeneroID);
 
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
         }
     }
 }
