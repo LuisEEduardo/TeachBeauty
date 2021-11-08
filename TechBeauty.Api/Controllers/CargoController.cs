@@ -47,7 +47,13 @@ namespace TechBeauty.Api.Controllers
         [HttpPut("{id}")]
         public void Put(int id, string nome, string descricao)
         {
-            cargoBD.Alterar2(id, nome, descricao, cargoBD.SelecionarTudo());
+            Cargo cargo = cargoBD.Selecionar(id);
+            if (cargo != null)
+            {
+                cargo.MudarNome(nome);
+                cargo.MudarDescricao(descricao);
+                cargoBD.Alterar(cargo);
+            }
         }
 
         // DELETE api/<CargoController>/5

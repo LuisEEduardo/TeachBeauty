@@ -20,18 +20,6 @@ namespace TechBeauty.Dados.Repositorio
             }
         }
 
-        public void Alterar2(int id, string nome, string descricao, List<Cargo> lista)
-        {
-            foreach (var cargo in lista)
-            {
-                if (cargo.Id == id)
-                {
-                    cargo.MudarNome(nome);
-                    cargo.MudarDescricao(descricao);
-                }
-            }
-
-        }
 
     }
 }
