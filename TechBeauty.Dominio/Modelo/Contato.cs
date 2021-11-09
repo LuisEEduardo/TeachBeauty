@@ -12,12 +12,12 @@ namespace TechBeauty.Dominio.Modelo
         public int PessoaID { get; set; }
         public Pessoa Pessoa { get; set; }
 
-        public static Contato Criar(int id, TipoContato tipoContato, string valor)
+        public static Contato Criar(int tipoContatoId, string valor, int pessoaId)
         {
             Contato contato = new Contato();
-            contato.Id = id;
-            contato.Tipo = tipoContato; 
+            contato.TipoContatoID = tipoContatoId; 
             contato.Valor = valor;
+            contato.PessoaID = pessoaId; 
             return contato; 
         }
 

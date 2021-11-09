@@ -17,18 +17,19 @@ namespace TechBeauty.Dominio.Modelo
         public string CnpjCTPS { get; private set; }
 
         
-        public static ContratoTrabalho Criar(int Id,
-            RegimeContratual regimeContratual,
+        public static ContratoTrabalho Criar(
+            int regimeContratualId,
             DateTime dataEntrada,
-            List<CargoContratoTrabalho> cargosContratosTrabalhos,
-            string cnpjCTPS)
+            // List<CargoContratoTrabalho> cargosContratosTrabalhos,
+            string cnpjCTPS,
+            int colaboradorID)
         {
             ContratoTrabalho contratoTrabalho = new ContratoTrabalho();
-            contratoTrabalho.Id = Id;
-            contratoTrabalho.RegimeContratual = regimeContratual;
+            contratoTrabalho.RegimeContratualID = regimeContratualId;
             contratoTrabalho.DataEntrada = dataEntrada;
-            contratoTrabalho.CargosContratosTrabalho = cargosContratosTrabalhos;
+            // contratoTrabalho.CargosContratosTrabalho = cargosContratosTrabalhos;
             contratoTrabalho.CnpjCTPS = cnpjCTPS;
+            contratoTrabalho.ColaboradorID = colaboradorID;
             return contratoTrabalho;
         }
 

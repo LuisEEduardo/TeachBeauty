@@ -11,13 +11,12 @@ namespace TechBeauty.Dominio.Modelo
         public Colaborador Colaborador { get; private set; }
         public int ColaboradorID { get; set; }
 
-        public static Escala Criar(int id, DateTime dataHoraEntrada, DateTime dataHoraSaida, Colaborador colaborador)
+        public static Escala Criar(DateTime dataHoraEntrada, DateTime dataHoraSaida, int colaboradorId)
         {
             Escala escala = new Escala();
-            escala.Id = id;
             escala.DataHoraEntrada = dataHoraEntrada;
             escala.DataHoraSaida = dataHoraSaida;
-            escala.Colaborador = colaborador;
+            escala.ColaboradorID = colaboradorId;
 
             return escala; 
         }
