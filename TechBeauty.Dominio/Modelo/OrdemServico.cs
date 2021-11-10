@@ -14,13 +14,12 @@ namespace TechBeauty.Dominio.Modelo
         public int ClienteID { get; set; }
         public List<Agendamento> Agendamentos { get; set; }
 
-        public static OrdemServico Criar(int id, decimal precoTotal, int duracaoTotal, Cliente cliente, StatusOS status)
+        public static OrdemServico Criar(decimal precoTotal, int duracaoTotal, int clienteId, StatusOS status)
         {
             OrdemServico ordemServico = new OrdemServico();
-            ordemServico.Id = id;
             ordemServico.PrecoTotal = precoTotal;
             ordemServico.DuracaoTotal = duracaoTotal;
-            ordemServico.Cliente = cliente;
+            ordemServico.ClienteID = clienteId;
             ordemServico.Status = status;
             return ordemServico;
         }
