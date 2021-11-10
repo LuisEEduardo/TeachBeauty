@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
@@ -7,7 +8,7 @@ namespace TechBeauty.Dados.Repositorio
     {
         public override CargoContratoTrabalho Selecionar(int id)
         {
-            return contexto.CargoContratoTrabalho.FirstOrDefault(x => x.ID == id);
+            return contexto.CargoContratoTrabalho.Include(x => x.Cargo).FirstOrDefault(x => x.ID == id);
         }
 
     }
