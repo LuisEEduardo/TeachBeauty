@@ -52,6 +52,7 @@ namespace TechBeauty.Api.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            servicoColaboradorBD.Excluir(id);
         }
     }
 }

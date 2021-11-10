@@ -13,10 +13,9 @@ namespace TechBeauty.Dominio.Modelo
         public List<ServicoColaborador> ServicosColaborador { get; set; }
         public List<Agendamento> Agendamentos { get; set; }
 
-        public static Servico Criar(int id, string nome, decimal preco, string descricao, int duracaoEmMin)
+        public static Servico Criar(string nome, decimal preco, string descricao, int duracaoEmMin)
         {
             Servico servico = new Servico();
-            servico.Id = id;
             servico.Nome = nome;
             servico.Preco = preco;
             servico.Descricao = descricao;
