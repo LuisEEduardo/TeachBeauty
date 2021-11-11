@@ -16,10 +16,14 @@ namespace TechBeauty.Dominio.Modelo
         public int ContratoTrabalhoID { get; set; }
         public List<ServicoColaborador> ServicosColaborador { get; set; }
         public List<Agendamento> Agendamentos { get; set; }
+        public Caixa Caixa { get; set; }
+        public int CaixaId { get; set; }
 
         // Propriedades dos Sistema Financeiro ---------------
         public decimal Salario { get; private set; }
         public int PorcentagemComissao { get; set; }
+        public int PagamentoColaboradorId { get; set; }
+        public PagamentoColaborador PagamentoColaborador { get; set; }
         // ---------------------------------------------------
 
 

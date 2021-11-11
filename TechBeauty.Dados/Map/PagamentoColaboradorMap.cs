@@ -21,22 +21,14 @@ namespace TechBeauty.Dados.Map
                 .HasColumnType("DATETIME")
                 .IsRequired();
 
-            builder.Property(x => x.ValorComissao)
-                .HasColumnType("DECIMAL(6, 2)")
-                .IsRequired();
-
-            builder.HasMany<PagamentoColaboradorPJ>
-                (pj => pj.PagamentoColaboradorPJ)
-                .WithOne(pc => pc.PagamentoColaborador)
-                .HasForeignKey(pc => pc.PagamentoColaboradorID);
-
-            builder.HasMany<PagamentoColaboradorCLT>
-                (clt => clt.PagamentoColaboradorCLT)
-                .WithOne(pc => pc.PagamentoColaborador)
-                .HasForeignKey(pc => pc.PagamentoColaboradorID);
-
             builder.Property(x => x.Id)
                 .UseIdentityColumn();
+
+            builder.HasMany<Colaborador>
+                (c => c.Colaboradores)
+                .WithOne(pg => pg.PagamentoColaborador)
+                .HasForeignKey(pg => pg.PagamentoColaboradorId);
+
         }
     }
 }

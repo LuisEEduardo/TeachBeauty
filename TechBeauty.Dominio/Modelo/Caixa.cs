@@ -6,8 +6,11 @@ namespace TechBeauty.Dominio.Modelo
     public class Caixa : IEntity
     {
         public int Id{ get; private set; }
-        public List<FechamentoDiario> FechamentosDiario { get; private set; }
         public decimal ValorEmCaixa { get; private set; }
+        public string Descricao { get; set; }
+        public decimal ValorMovimentado { get; set; }
+        public List<Colaborador> Colaborador { get; set; }
+        public List<FechamentoDiario> FechamentosDiario { get; private set; }
         public List<PagamentoColaborador> PagamentoColaborador { get; set; }
 
         public void CalcValorTotalFechamento()

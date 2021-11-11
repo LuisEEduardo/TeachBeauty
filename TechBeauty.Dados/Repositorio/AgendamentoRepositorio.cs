@@ -6,7 +6,5 @@ namespace TechBeauty.Dados.Repositorio
     public class AgendamentoRepositorio : RepositorioBase<Agendamento>
     {
 
-        
-        
     }
 }

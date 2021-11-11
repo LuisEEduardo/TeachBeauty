@@ -25,9 +25,7 @@ namespace TechBeauty.Dados
         public DbSet<PagamentoClienteFechamentoDiario> PagamentoClienteFechamentoDiario { get; set; }
         public DbSet<PagamentoClienteFormasPagamento> PagamentoClienteFormasPagamento { get; set; }
         public DbSet<PagamentoCliente> PagamentoCliente { get; set; }
-        public DbSet<PagamentoColaboradorCLT> PagamentoColaboradorCLT { get; set; }
         public DbSet<PagamentoColaborador> PagamentoColaborador { get; set; }
-        public DbSet<PagamentoColaboradorPJ> PagamentoColaboradorPJ { get; set; }
         public DbSet<Pessoa> Pessoa { get; set; }
         public DbSet<RegimeContratual> RegimeContratual { get; set; }
         public DbSet<ServicoColaborador> ServicoColaborador { get; set; }
@@ -37,7 +35,7 @@ namespace TechBeauty.Dados
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //                                                               // User ID=name; Password=password
-            optionsBuilder.UseSqlServer(@"Server=MIR-0553\SQLEXPRESS; Database=bancoDeDadosTechBeauty; Trusted_Connection=True");
+            optionsBuilder.UseSqlServer(@"Server=MIR-0553\SQLEXPRESS; Database=bancoDeDadosTechBeautyApresentacao; Trusted_Connection=True");
             base.OnConfiguring(optionsBuilder);
         }
 
@@ -61,9 +59,7 @@ namespace TechBeauty.Dados
             modelBuilder.ApplyConfiguration(new PagamentoClienteFechamentoDiarioMap());
             modelBuilder.ApplyConfiguration(new PagamentoClienteFormasPagamentoMap());
             modelBuilder.ApplyConfiguration(new PagamentoClienteMap());
-            modelBuilder.ApplyConfiguration(new PagamentoColaboradorCLTMap());
             modelBuilder.ApplyConfiguration(new PagamentoColaboradorMap());
-            modelBuilder.ApplyConfiguration(new PagamentoColaboradorPJMap());
             modelBuilder.ApplyConfiguration(new PessoaMap());
             modelBuilder.ApplyConfiguration(new RegimeContratualMap());
             modelBuilder.ApplyConfiguration(new ServicoColaboradorMap());

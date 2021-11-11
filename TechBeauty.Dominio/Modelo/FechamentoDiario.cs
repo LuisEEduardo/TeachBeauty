@@ -19,9 +19,9 @@ namespace TechBeauty.Dominio.Modelo
         {
             foreach (PagamentoCliente pagamento in Pagamentos)
             {
-                foreach (Agendamento agendamento in pagamento.Agendamentos)
+                foreach (var os in pagamento.OS)
                 {
-                    ValorFechamento += agendamento.OS.PrecoTotal;
+                    ValorFechamento += os.PrecoTotal;
                 }
             }
         }

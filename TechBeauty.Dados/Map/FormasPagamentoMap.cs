@@ -21,11 +21,6 @@ namespace TechBeauty.Dados.Map
                 .HasColumnType("VARCHAR(80)")
                 .IsRequired();
 
-            builder.HasMany<PagamentoColaborador>
-                (pc => pc.PagamentosColaborador)
-                .WithOne(f => f.FormaPagamento)
-                .HasForeignKey(f => f.FormasPagamentoID);
-
             builder.HasMany<PagamentoClienteFormasPagamento>
                 (pcfp => pcfp.pagamentoClienteFormasPagamentos)
                 .WithOne(f => f.FormasPagamento)

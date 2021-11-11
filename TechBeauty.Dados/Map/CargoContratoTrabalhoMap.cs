@@ -10,7 +10,7 @@ namespace TechBeauty.Dados.Map
         {
             builder.ToTable("CargoContratoTrabalho");
 
-            builder.HasKey(x => x.ID);
+            builder.HasKey(x => x.Id);
 
             builder.HasOne(c => c.Cargo)
                 .WithMany(cct => cct.CargoContratoTrabalhos)
@@ -20,7 +20,7 @@ namespace TechBeauty.Dados.Map
                 .WithMany(cct => cct.CargosContratosTrabalho)
                 .HasForeignKey(ct => ct.ContratoDeTrabalhoID);
 
-            builder.Property(x => x.ID)
+            builder.Property(x => x.Id)
                 .UseIdentityColumn();
 
         }

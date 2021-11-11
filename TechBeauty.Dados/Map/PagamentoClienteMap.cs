@@ -34,10 +34,10 @@ namespace TechBeauty.Dados.Map
                 .WithOne(pc => pc.PagamentoCliente)
                 .HasForeignKey(pc => pc.PagamentoClienteID);
 
-            builder.HasMany<Agendamento>
-                (a => a.Agendamentos)
+            builder.HasMany<OrdemServico>
+                (a => a.OS)
                 .WithOne(pc => pc.PagamentoCliente)
-                .HasForeignKey(pc => pc.PagamentoClienteID);
+                .HasForeignKey(pc => pc.PagamentoClienteId);
 
             builder.Property(x => x.Id)
                 .UseIdentityColumn();

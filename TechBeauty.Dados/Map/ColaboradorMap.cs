@@ -12,6 +12,14 @@ namespace TechBeauty.Dados.Map
 
             builder.ToTable("Colaborador");
 
+            builder.Property(x => x.PorcentagemComissao)
+                .HasColumnType("INT")
+                .IsRequired();
+
+            builder.Property(x => x.Salario)
+                .HasColumnType("DECIMAL(6, 2)")
+                .IsRequired();
+
             builder.Property(x => x.NomeSocial)
                 .HasColumnType("VARCHAR(100)");
 

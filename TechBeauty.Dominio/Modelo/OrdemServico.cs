@@ -13,6 +13,8 @@ namespace TechBeauty.Dominio.Modelo
         public StatusOS Status { get; private set; }
         public int ClienteID { get; set; }
         public List<Agendamento> Agendamentos { get; set; }
+        public PagamentoCliente PagamentoCliente { get; set; }
+        public int PagamentoClienteId { get; set; }
 
         public static OrdemServico Criar(decimal precoTotal, int duracaoTotal, int clienteId, StatusOS status)
         {
