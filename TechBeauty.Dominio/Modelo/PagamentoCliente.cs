@@ -10,6 +10,7 @@ namespace TechBeauty.Dominio.Modelo
         public int Id { get; private set; }
         public DateTime DiaPagamento { get; private set; }
         public FormasPagamento FormasPagamento { get; private set;}
+        public int FormasPagamentoId { get; set; }
         public StatusPagamento StatusPagamento { get; private set; }
         public decimal Pagamento { get; private set; }
         public Colaborador Colaborador { get; set; }
@@ -20,14 +21,13 @@ namespace TechBeauty.Dominio.Modelo
         
 
 
-        public static PagamentoCliente Criar(int id, List<OrdemServico> os, DateTime diaPagamento, 
-            FormasPagamento formasPagamento, StatusPagamento statusAgendamento, decimal pagamento)
+        public static PagamentoCliente Criar(DateTime diaPagamento, int formasPagamentoId,
+            StatusPagamento statusAgendamento, decimal pagamento, int colaboradorId)
         {
             PagamentoCliente pagamentoCliente = new PagamentoCliente();
-            pagamentoCliente.Id = id;
-            pagamentoCliente.OS = os;
             pagamentoCliente.DiaPagamento = diaPagamento;
-            pagamentoCliente.FormasPagamento = formasPagamento;
+            pagamentoCliente.FormasPagamentoId = formasPagamentoId;
+            pagamentoCliente.ColaboradorId = colaboradorId;
             pagamentoCliente.StatusPagamento = statusAgendamento;
             pagamentoCliente.Pagamento = pagamento;
 

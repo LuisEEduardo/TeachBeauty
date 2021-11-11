@@ -5,7 +5,7 @@ namespace TechBeauty.Dominio.Modelo
 {
     public class Caixa : IEntity
     {
-        public int Id{ get; private set; }
+        public int Id { get; private set; }
         public decimal ValorEmCaixa { get; private set; }
         public string Descricao { get; set; }
         public decimal ValorMovimentado { get; set; }
@@ -46,10 +46,10 @@ namespace TechBeauty.Dominio.Modelo
             {
                 if (fechamento == fechamentoDiario)
                 {
-                    return fechamento; 
+                    return fechamento;
                 }
             }
-            return null; 
+            return null;
         }
 
     }

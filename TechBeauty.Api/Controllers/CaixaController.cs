@@ -42,6 +42,7 @@ namespace TechBeauty.Api.Controllers
         {
             caixaDB.Incluir(Caixa.Criar(valorEmCaixa, valorMovimentado, descricao));
         }
+
         //// PUT api/<CaixaController>/5
         //[HttpPut("{id}")]
         //public void AddValor (int id, decimal addValor)

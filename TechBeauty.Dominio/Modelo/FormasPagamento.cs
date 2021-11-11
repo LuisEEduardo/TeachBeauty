@@ -11,10 +11,9 @@ namespace TechBeauty.Dominio.Modelo
         public List<PagamentoColaborador> PagamentosColaborador { get; set; }
         public List<PagamentoClienteFormasPagamento> pagamentoClienteFormasPagamentos { get; set; }
 
-        public static FormasPagamento CriarPagamento(int id, string nome, string descricao)
+        public static FormasPagamento CriarPagamento(string nome, string descricao)
         {
             FormasPagamento formasPagamento = new FormasPagamento();
-            formasPagamento.Id = id;
             formasPagamento.Nome = nome;
             formasPagamento.Descricao = descricao;
 
