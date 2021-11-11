@@ -13,6 +13,15 @@ namespace TechBeauty.Dominio.Modelo
         public List<FechamentoDiario> FechamentosDiario { get; private set; }
         public List<PagamentoColaborador> PagamentoColaborador { get; set; }
 
+        public static Caixa Criar(decimal valorEmCaixa, decimal valorMovimentado, string descricao)
+        {
+            Caixa caixa = new Caixa();
+            caixa.ValorEmCaixa = valorEmCaixa;
+            caixa.ValorMovimentado = valorMovimentado;
+            caixa.Descricao = descricao;
+            return caixa;
+        }
+
         public void CalcValorTotalFechamento()
         {
             foreach (FechamentoDiario fechamento in FechamentosDiario)

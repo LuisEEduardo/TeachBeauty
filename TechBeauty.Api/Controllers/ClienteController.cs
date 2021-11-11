@@ -14,7 +14,6 @@ namespace TechBeauty.Api.Controllers
     [ApiController]
     public class ClienteController : ControllerBase
     {
-
         ClienteRepositorio clienteBD;
 
         public ClienteController()
@@ -38,14 +37,21 @@ namespace TechBeauty.Api.Controllers
 
         // POST api/<ClienteController>
         [HttpPost]
-        public void Post()
+        public void Post(string nome, string cpf, DateTime dataNascimento)
         {
+            clienteBD.Incluir(Cliente.Criar(nome, cpf, dataNascimento));
         }
 
         // PUT api/<ClienteController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, string nome)
         {
+            Cliente cliente = clienteBD.Selecionar(id);
+            if (cliente != null)
+            {
+                cliente.AlterarNome(nome);
+                clienteBD.Alterar(cliente);
+            }
         }
 
         // DELETE api/<ClienteController>/5

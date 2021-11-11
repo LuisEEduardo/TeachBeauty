@@ -39,7 +39,7 @@ namespace TechBeauty.Dados.Repositorio
             }
             ColaboradorRepositorio colaboradorBD = new ColaboradorRepositorio();
             int percentual = colaboradorBD.Selecionar(ColaboradorId).PorcentagemComissao;
-            PagamentoColaborador pagamentoColaborador = (PagamentoColaborador)contexto.PagamentoColaborador.Where(x => x.Colaboradores[0].Id == ColaboradorId).Select(x => x);
+            PagamentoColaborador pagamentoColaborador = (PagamentoColaborador)contexto.PagamentoColaborador.Where(x => x.Colaborador[0].Id == ColaboradorId).Select(x => x);
             pagamentoColaborador.CalcValorComicao(valorDoServicoDia, percentual);
             contexto.SaveChanges();
             

@@ -23,10 +23,6 @@ namespace TechBeauty.Dados.Map
             builder.Property(x => x.NomeSocial)
                 .HasColumnType("VARCHAR(100)");
 
-            builder.Property(x => x.Salario)
-                .HasColumnType("DECIMAL(6, 2)")
-                .IsRequired();
-
             builder.HasMany<Escala>
                 (e => e.Escalas)
                 .WithOne(c => c.Colaborador)

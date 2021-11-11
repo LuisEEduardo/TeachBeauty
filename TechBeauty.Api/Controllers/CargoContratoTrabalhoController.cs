@@ -47,6 +47,7 @@ namespace TechBeauty.Api.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+
         }
 
         // DELETE api/<CargoContratoTrabalhoController>/5
@@ -54,5 +55,6 @@ namespace TechBeauty.Api.Controllers
         public void Delete(int id)
         {
         }
+
     }
 }

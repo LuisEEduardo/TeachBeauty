@@ -11,6 +11,7 @@ using TechBeauty.Dominio.Modelo;
 namespace TechBeauty.Api.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class AgendamentoController : ControllerBase
     {
 
@@ -37,13 +38,13 @@ namespace TechBeauty.Api.Controllers
 
         // POST api/<AgendamentoController>
         [HttpPost]
-        public void Post(Servico servico, string pessoaAtendia, 
-            DateTime dataHoraInicio, OrdemServico os, 
-            DateTime dataHoraCriacao, DateTime dataHoraTermino, 
-            Colaborador colaborador)
+        public void Post(int servicoId, string pessoaAtendia,
+            DateTime dataHoraInicio, int ordemServicoId,
+            DateTime dataHoraCriacao, DateTime dataHoraTermino,
+            int colaboradorId)
         {
-            agendamentoBD.Incluir(Agendamento.Criar(servico, colaborador, pessoaAtendia, 
-                dataHoraInicio, os, dataHoraCriacao, dataHoraTermino));
+            agendamentoBD.Incluir(Agendamento.Criar(servicoId, colaboradorId, pessoaAtendia,
+                dataHoraInicio, ordemServicoId, dataHoraCriacao, dataHoraTermino));
         }
 
         // PUT api/<AgendamentoController>/5

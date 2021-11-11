@@ -21,9 +21,9 @@ namespace TechBeauty.Dominio.Modelo
 
         // Propriedades dos Sistema Financeiro ---------------
         public decimal Salario { get; private set; }
-        public int PorcentagemComissao { get; set; }
-        public int PagamentoColaboradorId { get; set; }
+        public int PorcentagemComissao { get; set; }        
         public PagamentoColaborador PagamentoColaborador { get; set; }
+        public int PagamentoColaboradorId { get; set; }
         // ---------------------------------------------------
 
 

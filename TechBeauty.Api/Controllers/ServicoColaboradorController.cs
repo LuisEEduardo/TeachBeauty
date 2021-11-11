@@ -38,14 +38,16 @@ namespace TechBeauty.Api.Controllers
 
         // POST api/<ServicoColaboradorController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post()
         {
+
         }
 
         // PUT api/<ServicoColaboradorController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put()
         {
+
         }
 
         // DELETE api/<ServicoColaboradorController>/5

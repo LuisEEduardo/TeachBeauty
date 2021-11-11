@@ -45,14 +45,22 @@ namespace TechBeauty.Api.Controllers
 
         // PUT api/<LogAgendamentoController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, StatusAgendamento status)
         {
+            LogAgendamento logAgendamento = logAgendamentoBD.Selecionar(id);
+            if (logAgendamento != null)
+            {
+                logAgendamento.AlterarStatus(status);
+                logAgendamentoBD.Alterar(logAgendamento);
+            }
         }
 
         // DELETE api/<LogAgendamentoController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            logAgendamentoBD.Excluir(id);
         }
+
     }
 }

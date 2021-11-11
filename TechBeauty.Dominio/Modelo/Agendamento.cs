@@ -21,16 +21,16 @@ namespace TechBeauty.Dominio.Modelo
         public int PagamentoClienteID { get; set; }
         public PagamentoCliente PagamentoCliente { get; set; }
 
-        public static Agendamento Criar(Servico servico, Colaborador colaborador,
-            string pessoaAtendia, DateTime dataHoraInicio, OrdemServico os, DateTime dataHoraCriacao,
+        public static Agendamento Criar(int servicoID, int colaboradorID,
+            string pessoaAtendia, DateTime dataHoraInicio, int ordemServicoID, DateTime dataHoraCriacao,
             DateTime dataHoraTermino)
         {
             Agendamento agendamento = new Agendamento();
-            agendamento.Servico = servico;
-            agendamento.Colaborador = colaborador;
+            agendamento.ServicoID = servicoID;
+            agendamento.ColaboradorID = colaboradorID;
             agendamento.PessoaAtendia = pessoaAtendia;
             agendamento.DataHoraInicio = dataHoraInicio;
-            agendamento.OS = os;
+            agendamento.OrdemServicoID = ordemServicoID;
             agendamento.DataHoraCriacao = dataHoraCriacao;
             agendamento.DataHoraTermino = dataHoraTermino;
             return agendamento;

@@ -8,7 +8,7 @@ namespace TechBeauty.Dominio.Modelo
     public class PagamentoColaborador : IEntity
     {
         public int Id { get; private set; }
-        public List<Colaborador> Colaboradores { get; private set; }
+        public List<Colaborador> Colaborador { get; private set; }
         public StatusPagamento StatusPagamento { get; private set; }
         public DateTime DataPagamento { get; private set; }
         public decimal Valor { get; set; }
