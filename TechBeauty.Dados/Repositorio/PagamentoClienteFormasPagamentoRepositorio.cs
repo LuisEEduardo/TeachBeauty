@@ -2,7 +2,7 @@
 
 namespace TechBeauty.Dados.Repositorio
 {
-    class PagamentoClienteFormasPagamentoRepositorio : RepositorioBase<PagamentoClienteFormasPagamento>
+    public class PagamentoClienteFormasPagamentoRepositorio : RepositorioBase<PagamentoClienteFormasPagamento>
     {
        
     }

@@ -34,7 +34,7 @@ namespace TechBeauty.Dados.Repositorio
 
         public List<T> SelecionarTudo()
         {
-            return contexto.Set<T>().ToList();
+                return contexto.Set<T>().ToList();
         }
 
         public void Excluir(int id)

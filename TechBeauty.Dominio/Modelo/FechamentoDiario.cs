@@ -14,6 +14,14 @@ namespace TechBeauty.Dominio.Modelo
         public int CaixaID { get; set; }
         public Caixa Caixa { get; set; }
 
+        public static FechamentoDiario Criar(DateTime dataFechamento, decimal valorFechamento)
+        {
+            FechamentoDiario fechamentoDiario = new FechamentoDiario();
+            fechamentoDiario.DataFechamento = dataFechamento;
+            fechamentoDiario.ValorFechamento = valorFechamento;
+
+            return fechamentoDiario;
+        }
 
         public void calcFechamentoDia()
         {
@@ -34,6 +42,11 @@ namespace TechBeauty.Dominio.Modelo
         public void RemovePagamento(PagamentoCliente pagamento)
         {
             Pagamentos.Remove(pagamento);
+        }
+
+        public void MudarValorFechamento(decimal valorFechamento)
+        {
+            ValorFechamento = valorFechamento;
         }
 
     }

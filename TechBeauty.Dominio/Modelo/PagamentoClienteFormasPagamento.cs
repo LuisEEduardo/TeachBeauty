@@ -10,5 +10,17 @@ namespace TechBeauty.Dominio.Modelo
         public PagamentoCliente PagamentoCliente { get; set; }
 
         public int Id => throw new System.NotImplementedException();
+
+
+        public static PagamentoClienteFormasPagamento Criar(int pagamentoClienteID,
+            int formasPagamentoID)
+        {
+            PagamentoClienteFormasPagamento pagamentoClienteFormasPagamento = new PagamentoClienteFormasPagamento();
+            pagamentoClienteFormasPagamento.PagamentoClienteID = pagamentoClienteID;
+            pagamentoClienteFormasPagamento.FormasPagamentoID = formasPagamentoID;
+
+            return pagamentoClienteFormasPagamento;
+        }
+
     }
 }
