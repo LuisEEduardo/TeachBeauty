@@ -35,7 +35,7 @@ namespace TechBeauty.Dados
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //                                                               // User ID=name; Password=password
-            optionsBuilder.UseSqlServer(@"Server=MIR-0553\SQLEXPRESS; Database=bancoDeDadosTechBeautyApresentacao; Trusted_Connection=True");
+            optionsBuilder.UseSqlServer(@"Server=MIR-0553\SQLEXPRESS; Database=bancoTeste; Trusted_Connection=True");
             base.OnConfiguring(optionsBuilder);
         }
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TechBeauty.Dados;
 
 namespace TechBeauty.Dados.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20211112114835_teste")]
+    partial class teste
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,9 +45,6 @@ namespace TechBeauty.Dados.Migrations
                     b.Property<int>("OrdemServicoID")
                         .HasColumnType("int");
 
-                    b.Property<int>("PagamentoClienteID")
-                        .HasColumnType("int");
-
                     b.Property<string>("PessoaAtendia")
                         .HasColumnType("VARCHAR(30)");
 
@@ -57,8 +56,6 @@ namespace TechBeauty.Dados.Migrations
                     b.HasIndex("ColaboradorID");
 
                     b.HasIndex("OrdemServicoID");
-
-                    b.HasIndex("PagamentoClienteID");
 
                     b.HasIndex("ServicoID");
 
@@ -74,9 +71,6 @@ namespace TechBeauty.Dados.Migrations
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ColaboradorId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
@@ -87,8 +81,6 @@ namespace TechBeauty.Dados.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ColaboradorId");
 
                     b.ToTable("Caixa");
                 });
@@ -480,10 +472,10 @@ namespace TechBeauty.Dados.Migrations
                         .HasColumnType("INT");
 
                     b.Property<int>("Tipo")
-                        .HasColumnType("INT");
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnType("DECIMAL");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -609,6 +601,9 @@ namespace TechBeauty.Dados.Migrations
                 {
                     b.HasBaseType("TechBeauty.Dominio.Modelo.Pessoa");
 
+                    b.Property<int>("CaixaId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ContratoTrabalhoID")
                         .HasColumnType("int");
 
@@ -629,6 +624,8 @@ namespace TechBeauty.Dados.Migrations
 
                     b.Property<decimal>("Salario")
                         .HasColumnType("DECIMAL(6,2)");
+
+                    b.HasIndex("CaixaId");
 
                     b.HasIndex("EnderecoID");
 
@@ -653,12 +650,6 @@ namespace TechBeauty.Dados.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TechBeauty.Dominio.Modelo.PagamentoCliente", "PagamentoCliente")
-                        .WithMany()
-                        .HasForeignKey("PagamentoClienteID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("TechBeauty.Dominio.Modelo.Servico", "Servico")
                         .WithMany("Agendamentos")
                         .HasForeignKey("ServicoID")
@@ -669,20 +660,7 @@ namespace TechBeauty.Dados.Migrations
 
                     b.Navigation("OS");
 
-                    b.Navigation("PagamentoCliente");
-
                     b.Navigation("Servico");
-                });
-
-            modelBuilder.Entity("TechBeauty.Dominio.Modelo.Caixa", b =>
-                {
-                    b.HasOne("TechBeauty.Dominio.Modelo.Colaborador", "Colaborador")
-                        .WithMany("Caixa")
-                        .HasForeignKey("ColaboradorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Colaborador");
                 });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.CargoContratoTrabalho", b =>
@@ -900,6 +878,12 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Colaborador", b =>
                 {
+                    b.HasOne("TechBeauty.Dominio.Modelo.Caixa", "Caixa")
+                        .WithMany("Colaborador")
+                        .HasForeignKey("CaixaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("TechBeauty.Dominio.Modelo.Endereco", "Endereco")
                         .WithMany("Colaboradores")
                         .HasForeignKey("EnderecoID")
@@ -924,6 +908,8 @@ namespace TechBeauty.Dados.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Caixa");
+
                     b.Navigation("Endereco");
 
                     b.Navigation("Genero");
@@ -938,6 +924,8 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Caixa", b =>
                 {
+                    b.Navigation("Colaborador");
+
                     b.Navigation("FechamentosDiario");
 
                     b.Navigation("PagamentoColaborador");
@@ -1026,8 +1014,6 @@ namespace TechBeauty.Dados.Migrations
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Colaborador", b =>
                 {
                     b.Navigation("Agendamentos");
-
-                    b.Navigation("Caixa");
 
                     b.Navigation("ContratoTrabalho");
 

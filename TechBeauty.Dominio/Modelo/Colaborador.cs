@@ -16,8 +16,7 @@ namespace TechBeauty.Dominio.Modelo
         public int ContratoTrabalhoID { get; set; }
         public List<ServicoColaborador> ServicosColaborador { get; set; }
         public List<Agendamento> Agendamentos { get; set; }
-        public Caixa Caixa { get; set; }
-        public int CaixaId { get; set; }
+        public List<Caixa> Caixa { get; set; }
 
         // Propriedades dos Sistema Financeiro ---------------
         public decimal Salario { get; private set; }
@@ -35,7 +34,8 @@ namespace TechBeauty.Dominio.Modelo
             string nomeSocial,
             string nome,
             string cpf,
-            DateTime dataNascimento
+            DateTime dataNascimento,
+            int porcentagemComissao
             )
         {
             Colaborador colaborador = new Colaborador();
@@ -47,6 +47,7 @@ namespace TechBeauty.Dominio.Modelo
             colaborador.CPF = cpf;
             colaborador.DataNascimento = dataNascimento;
             // colaborador.Contatos = contatos;
+            colaborador.PorcentagemComissao = porcentagemComissao;
 
             return colaborador;
         }

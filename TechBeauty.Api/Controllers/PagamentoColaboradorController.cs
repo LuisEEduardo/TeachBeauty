@@ -37,9 +37,9 @@ namespace TechBeauty.Api.Controllers
         // POST api/<PagamentoColaboradorController>
         [HttpPost]
         public void Post(StatusPagamento statusPagamento, DateTime dataPagamento,
-            decimal valor)
+            decimal valor, Tipo tipo)
         {
-            pagamentoColaboradorBD.Incluir(PagamentoColaborador.Criar(statusPagamento, dataPagamento, valor));
+            pagamentoColaboradorBD.Incluir(PagamentoColaborador.Criar(statusPagamento, dataPagamento, valor, tipo));
         }
 
         // PUT api/<PagamentoColaboradorController>/5

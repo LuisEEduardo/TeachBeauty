@@ -41,10 +41,10 @@ namespace TechBeauty.Api.Controllers
         public void Post(int servicoId, string pessoaAtendia,
             DateTime dataHoraInicio, int ordemServicoId,
             DateTime dataHoraCriacao, DateTime dataHoraTermino,
-            int colaboradorId)
+            int colaboradorId, int pagamentoClienteID)
         {
             agendamentoBD.Incluir(Agendamento.Criar(servicoId, colaboradorId, pessoaAtendia,
-                dataHoraInicio, ordemServicoId, dataHoraCriacao, dataHoraTermino));
+                dataHoraInicio, ordemServicoId, dataHoraCriacao, dataHoraTermino, pagamentoClienteID));
         }
 
         // PUT api/<AgendamentoController>/5

@@ -38,6 +38,11 @@ namespace TechBeauty.Dados.Map
                 .WithOne(c => c.Colaborador)
                 .HasForeignKey(c => c.ColaboradorID);
 
+            builder.HasMany<Caixa>
+                (c => c.Caixa)
+                .WithOne(c => c.Colaborador)
+                .HasForeignKey(c => c.ColaboradorId);
+
             builder.Property(x => x.Id)
                 .UseIdentityColumn();
 

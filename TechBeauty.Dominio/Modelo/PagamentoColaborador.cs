@@ -8,22 +8,23 @@ namespace TechBeauty.Dominio.Modelo
     public class PagamentoColaborador : IEntity
     {
         public int Id { get; private set; }
-        public List<Colaborador> Colaborador { get; set; }
         public StatusPagamento StatusPagamento { get; set; }
         public DateTime DataPagamento { get; set; }
         public decimal Valor { get; set; }
         public Tipo Tipo { get; set; }
         public int CaixaID { get; set; }
         public Caixa Caixa { get; set; }
+        public List<Colaborador> Colaborador { get; set; }
 
-        public static PagamentoColaborador Criar(StatusPagamento statusPagamento, DateTime dataPagamento,
-            decimal valor)
+
+        public static PagamentoColaborador Criar(StatusPagamento statusPagamento, 
+            DateTime dataPagamento, decimal valor, Tipo tipo)
         {
             PagamentoColaborador pagamentoColaborador = new PagamentoColaborador();
             pagamentoColaborador.StatusPagamento = statusPagamento;
             pagamentoColaborador.DataPagamento = dataPagamento;
             pagamentoColaborador.Valor = valor;
-            //pagamentoColaborador.Tipo = tipo;
+            pagamentoColaborador.Tipo = tipo;
 
             return pagamentoColaborador;
         }

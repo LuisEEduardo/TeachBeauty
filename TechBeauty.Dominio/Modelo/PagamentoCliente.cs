@@ -18,11 +18,10 @@ namespace TechBeauty.Dominio.Modelo
         public List<PagamentoClienteFormasPagamento> PagamentoClienteFormasPagamento { get; set; }
         public List<PagamentoClienteFechamentoDiario> PagamentoClienteFechamentoDiario { get; set; }
         public List<OrdemServico> OS { get; set; }
-        
 
 
         public static PagamentoCliente Criar(DateTime diaPagamento, int formasPagamentoId,
-            StatusPagamento statusAgendamento, decimal pagamento, int colaboradorId)
+            StatusPagamento statusAgendamento, decimal pagamento, int colaboradorId) 
         {
             PagamentoCliente pagamentoCliente = new PagamentoCliente();
             pagamentoCliente.DiaPagamento = diaPagamento;

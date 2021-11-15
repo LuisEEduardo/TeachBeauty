@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TechBeauty.Dados.Repositorio;
 using TechBeauty.Dominio.Modelo;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,11 +15,11 @@ namespace TechBeauty.Api.Controllers
     public class ColaboradorController : ControllerBase
     {
 
-        ColaboradorRespositorio colaboradorBD;
+        ColaboradorRepositorio colaboradorBD;
 
         public ColaboradorController()
         {
-            colaboradorBD = new ColaboradorRespositorio();
+            colaboradorBD = new ColaboradorRepositorio();
         }
 
         // GET: api/<ColaboradorController>
@@ -37,9 +38,11 @@ namespace TechBeauty.Api.Controllers
 
         // POST api/<ColaboradorController>
         [HttpPost]
-        public void Post(int enderecoId, int generoId, string nomeSocial, string nome, string cpf, DateTime dataNascimento)
+        public void Post(int enderecoId, int generoId, string nomeSocial, string nome, 
+            string cpf, DateTime dataNascimento, int pagamentoComissao)
         {
-            colaboradorBD.Incluir(Colaborador.Criar(enderecoId, generoId, nomeSocial, nome, cpf, dataNascimento));
+            colaboradorBD.Incluir(Colaborador.Criar(enderecoId, generoId, nomeSocial, 
+                nome, cpf, dataNascimento, pagamentoComissao));
         }
 
         // PUT api/<ColaboradorController>/5

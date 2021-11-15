@@ -38,9 +38,10 @@ namespace TechBeauty.Api.Controllers
 
         // POST api/<CaixaController>
         [HttpPost]
-        public void Post(decimal valorEmCaixa, decimal valorMovimentado, string descricao)
+        public void Post(decimal valorEmCaixa, decimal valorMovimentado, string descricao,
+            int colaboradorId)
         {
-            caixaDB.Incluir(Caixa.Criar(valorEmCaixa, valorMovimentado, descricao));
+            caixaDB.Incluir(Caixa.Criar(valorEmCaixa, valorMovimentado, descricao, colaboradorId));
         }
 
         //// PUT api/<CaixaController>/5

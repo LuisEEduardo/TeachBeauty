@@ -23,7 +23,7 @@ namespace TechBeauty.Dominio.Modelo
 
         public static Agendamento Criar(int servicoID, int colaboradorID,
             string pessoaAtendia, DateTime dataHoraInicio, int ordemServicoID, DateTime dataHoraCriacao,
-            DateTime dataHoraTermino)
+            DateTime dataHoraTermino, int pagamentoClienteID)
         {
             Agendamento agendamento = new Agendamento();
             agendamento.ServicoID = servicoID;
@@ -33,6 +33,7 @@ namespace TechBeauty.Dominio.Modelo
             agendamento.OrdemServicoID = ordemServicoID;
             agendamento.DataHoraCriacao = dataHoraCriacao;
             agendamento.DataHoraTermino = dataHoraTermino;
+            agendamento.PagamentoClienteID = pagamentoClienteID;
             return agendamento;
         }
 

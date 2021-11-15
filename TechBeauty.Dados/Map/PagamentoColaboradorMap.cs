@@ -21,6 +21,14 @@ namespace TechBeauty.Dados.Map
                 .HasColumnType("DATETIME")
                 .IsRequired();
 
+            builder.Property(x => x.Tipo)
+                .HasColumnType("INT")
+                .IsRequired();
+
+            builder.Property(x => x.Valor)
+                .HasColumnType("DECIMAL")
+                .IsRequired();
+
             builder.HasMany<Colaborador>
                 (c => c.Colaborador)
                 .WithOne(pg => pg.PagamentoColaborador)
